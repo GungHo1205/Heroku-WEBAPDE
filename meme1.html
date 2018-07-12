@@ -12,9 +12,83 @@
     margin: auto;
     overflow: auto;
     }
+    input[type=checkbox] {
+        height:17px;
+        width: 17px;    
+   /* For mobile, it's typically better to position checkbox on top of clickable
+      area and turn opacity to 0 instead. */
+}
 </style>
 </head>
 <body>
-    <a href="javascript:history.back()"><img src="./meme1.jpg" id="full"></a>
+    <a href="javascript:history.back()"><img src="./meme1.jpg" height="300px" width="300px" id="full"></a>
+    <p>Posted by: <a href = './user-profile.html'>Joshy</a></p>
+      <p>Post is :<label class="checkbox-inline"><input type="checkbox" style = "border-width: 5px;" name = "public"class = "public" checked disabled>Public </label><label class="checkbox-inline"><input type="checkbox" name = "private" disabled>Private </label></p>
+        <p>Edit meme tags:</p>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Loli' id = 'Loli'  disabled>Loli </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Futanari' id = 'Futanari'  disabled>Futanari </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Ahegao' id = 'Ahegao'  disabled>Ahegao </label> 
+            </div>
+            <div>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Oppai' id = 'Oppai' disabled>Oppai </label>
+            <label class="-inline"><input type="checkbox" value="" id = 'Netorare' disabled>Netorare </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = "Horror" id ="Horror" checked disabled>Horror </label>
+            </div>
+            <span style = "display:inline;">
+                <button type = 'button' onclick = 'edit();'>Edit tags</button>
+                <button type = 'button' onclick = 'save();'>Save tags</button>
+            </span>
+        </form>
+            <form method="post" enctype="multipart/form-data">
+            <div>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Salcy' id = 'Salcy'  disabled>Salcy </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Manzy' id = 'Manzy'  disabled>Manzy </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Ato' id = 'Ato'  disabled>Ato </label> 
+            </div>
+            <span style = "display:inline;">
+                <button type = 'button' onclick = 'enable();'>Edit shared users</button>
+                <button type = 'button' onclick = 'disable();'>Save shared users</button>
+            </span>
+                <br>
+            <span style = "display:inline;">
+                <button type = 'button' onclick = 'enable();'>Edit Post</button>
+                <button type = 'button' onclick = 'disable();'>Delete Post</button>
+            </span>
+        </form>
+          <script>
+            function edit() {
+            document.getElementById("Horror").disabled= false;
+            document.getElementById("Netorare").disabled= false;
+            document.getElementById("Loli").disabled= false;
+            document.getElementById("Futanari").disabled= false;
+            document.getElementById("Ahegao").disabled= false;
+            document.getElementById("Oppai").disabled= false;
+                return false;
+}
+            function save() {
+            document.getElementById("Horror").disabled= true;
+            document.getElementById("Netorare").disabled= true;
+            document.getElementById("Loli").disabled= true;
+            document.getElementById("Futanari").disabled= true;
+            document.getElementById("Ahegao").disabled= true;
+            document.getElementById("Oppai").disabled= true;
+                return false;
+}
+            function disable() {
+            document.getElementById("Salcy").disabled= true;
+            document.getElementById("Manzy").disabled= true;
+            document.getElementById("Ato").disabled= true;
+                return false;
+}
+            function enable() {
+            document.getElementById("Salcy").disabled= false;
+            document.getElementById("Manzy").disabled= false;
+            document.getElementById("Ato").disabled= false;
+                return false;
+}
+        </script>
+
 </body>
 </html>
