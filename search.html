@@ -2,6 +2,15 @@
 <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title> About </title>
+    <style>
+        #searchicon{
+            height: 200px;
+        }
+        body{
+            background-color: paleturquoise;
+        }
+
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -12,10 +21,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a href = "./index.html"> <img src="./salcy.png"></a>
+      <a href = "./index.html"> <img src="./salcy.png" height="45px" width="45px"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+        <li><a>EMEMERALD</a></li>
         <li ><a href="index.html">Home</a></li>
         <li><a href="./about.html">About</a></li>
         <li class="active"><a href="#">Search by tags</a></li>
@@ -27,12 +37,19 @@
     </div>
   </div>
 </nav>
+    <center>
+    <img src="./search.png" id="searchicon">
+    <form>
+        <span><input type="text" name="searchkey"></span>
+        <span><input type="button" name="search" value="Search"></span> 
+    </form>
     <p><a>Loli</a></p>
     <p><a>Futanari</a></p>
     <p><a>Ahegao</a></p>
     <p><a>Oppai</a></p>
     <p><a>Netorare</a></p>
     <p><a>Horror</a></p>
+    </center>
 </body>
 
 </html>
