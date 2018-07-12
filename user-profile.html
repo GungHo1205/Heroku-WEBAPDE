@@ -15,13 +15,18 @@
     }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 1000px}
+    .row.content {height: 1800px}
     
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
       background-color: palegreen;
       height: 100%;
+    }
+          footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
     }
     #most-recent{
       font-size: 22px;
@@ -41,11 +46,6 @@
       }
     
     /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
     body {
       padding-top: 50px;
     }
@@ -70,6 +70,10 @@
         width: 100px;
         margin-top: 5px;
         background-color: aliceblue;    
+      }
+      .img-responsive{
+          height:150px;
+          width: 200px;
       }
   </style>
 </head>
@@ -130,6 +134,88 @@
       <h3>hello world</h3>
       <hr>
       <input type="button" value="Edit user info" name="edit">
+        <div class="container-fluid bg-3 text-center">    
+  <h3>Recent memes:</h3><br>
+  <div class="row">
+    <div class="col-sm-3">
+        <a href='./meme1.html'><img src="./meme1.jpg" class="img-responsive"></a>
+    </div>
+    <div class="col-sm-3"> 
+        <a href='./meme2.html'><img src="./meme2.jpg" class="img-responsive"></a>
+    </div>
+    <div class="col-sm-3"> 
+        <a href='./meme3.html'><img src="./meme3.jpg" class="img-responsive"></a>
+    </div>
+    <div class="col-sm-3">
+        <a href='./meme4.html'><img src="./meme4.jpg" class="img-responsive"></a>
+    </div>
+  </div>
+</div><br>
+        <div class="container-fluid bg-3 text-center">    
+  <br>
+  <div class="row">
+    <div class="col-sm-3">
+        <a href='./meme5.html'><img src="./meme5.jpg" class="img-responsive"></a>
+    </div>
+    <div class="col-sm-3"> 
+        <a href='./meme6.html'><img src="./meme6.jpg" class="img-responsive"></a>
+    </div>
+    <div class="col-sm-3"> 
+        <a href='./meme7.html'><img src="./meme7.jpg" class="img-responsive"></a>
+    </div>
+    <div class="col-sm-3">
+        <a href='./meme8.html'><img src="./meme8.jpg" class="img-responsive"></a>
+    </div>
+  </div>
+</div><br>
+<button onclick="javascript:ShowHide('HiddenDiv')">View rest of memes</button>
+<div class="mid" id="HiddenDiv" style="display: none;">       
+    <div class="container-fluid bg-3 text-center">    
+      <br>
+      <div class="row">
+        <div class="col-sm-3">
+            <a href='./meme9.html'><img src="./meme9.jpg" class="img-responsive"></a>
+        </div>
+        <div class="col-sm-3"> 
+            <a href='./meme10.html'><img src="./meme10.jpg" class="img-responsive"></a>
+        </div>
+        <div class="col-sm-3"> 
+            <a href='./meme11.html'><img src="./meme11.jpg" class="img-responsive"></a>
+        </div>
+        <div class="col-sm-3">
+            <a href='./meme12.html'><img src="./meme12.jpg" class="img-responsive"></a>
+        </div>
+  </div>
+</div><br>
+    <div class="container-fluid bg-3 text-center">    
+      <br>
+      <div class="row">
+        <div class="col-sm-3">
+          <a href='./meme13.html'><img src="./meme13.jpg" class="img-responsive"></a>
+        </div>
+        <div class="col-sm-3"> 
+            <a href='./meme14.html'><img src="./meme14.jpg" class="img-responsive"></a>
+        </div>
+        <div class="col-sm-3"> 
+          <a href='./meme15.html'><img src="./meme15.jpg" class="img-responsive"></a>
+        </div>
+      </div>
+</div><br>
+</div>
+<script type="text/javascript">// <![CDATA[
+function ShowHide(divId)
+{
+if(document.getElementById(divId).style.display == 'none')
+{
+document.getElementById(divId).style.display='block';
+}
+else
+{
+document.getElementById(divId).style.display = 'none';
+}
+}
+// ]]></script>
+
 
     </div>
     <div class="col-sm-2 sidenav">
@@ -142,10 +228,11 @@
     </div>
   </div>
 </div>
-
-<footer class="container-fluid text-center">
+    <footer class="container-fluid text-center">
   <p></p>
 </footer>
+
+
 
 </body>
 </html>
