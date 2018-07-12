@@ -18,6 +18,9 @@
       margin-bottom: 0;
       border-radius: 0;
     }
+      body {
+      padding-top: 50px;
+    }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 1000px}
@@ -52,7 +55,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse" id = "myHeader">
+<nav class="navbar navbar-default navbar-fixed-top navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -101,13 +104,13 @@
         window.onscroll = function() {myFunction()};
 
         var header = document.getElementById("myHeader");
-        var sticky = header.offsetTop;
+        var sticky = navbar navbar-inverse.offsetTop;
     
         function myFunction() {
           if (window.pageYOffset > sticky) {
             navbar navbar-inverse.classList.add("sticky");
           } else {
-            header.classList.remove("sticky");
+            navbar navbar-inverse.classList.remove("sticky");
           }
         }
         </script>
