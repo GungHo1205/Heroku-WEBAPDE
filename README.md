@@ -1,15 +1,3 @@
-<body>
-	<div id="top">
-		<nav>black-ramen.herokuapp.com HTML Site Map</nav>
-		<h3>
-<span>Last updated: 2018, July 13<br />
-Total pages: %TOTALURLS%</span>
-<a href="https://black-ramen.herokuapp.com">black-ramen.herokuapp.com Homepage</a>
-</h3></div>
-	<div id="cont">
-		<ul class="level-0">
-
-            <li class="lhead">/  <span class="lcount">43 pages</span></li>
             
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/" title="Ememerald">Ememerald</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/index.html" title="Ememerald">Ememerald</a></li>
