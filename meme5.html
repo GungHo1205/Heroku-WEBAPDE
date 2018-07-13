@@ -1,20 +1,261 @@
 <html>
 <head>
-<style>
-    full{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-    overflow: auto;
-    }
-</style>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script>
+            function edit() {
+                var private_checked = document.getElementById("private").checked
+                var public_checked = document.getElementById("private").checked
+            document.getElementById("Funny").disabled= false;
+            document.getElementById("Sad").disabled= false;
+            document.getElementById("Relationships").disabled= false;
+            document.getElementById("Social").disabled= false;
+            document.getElementById("Disgusting").disabled= false;
+            document.getElementById("Racists").disabled= false;
+                return false;
+            }
+            function save() {
+            document.getElementById("Funny").disabled= true;
+            document.getElementById("Sad").disabled= true;
+            document.getElementById("Relationships").disabled= true;
+            document.getElementById("Social").disabled= true;
+            document.getElementById("Disgusting").disabled= true;
+            document.getElementById("Racists").disabled= true;
+                return false;
+            }
+            function disable() {
+            document.getElementById("Salcy").disabled= true;
+            document.getElementById("Manzy").disabled= true;
+            document.getElementById("Ato").disabled= true;
+                return false;
+            }
+            function enable() {
+            document.getElementById("Salcy").disabled= false;
+            document.getElementById("Manzy").disabled= false;
+            document.getElementById("Ato").disabled= false;
+            
+                return false;
+            }
+            function meddle(){
+            document.getElementById("private").disabled= false;
+            document.getElementById("public").disabled= false;
+              return false;
+            }
+            function meddled(){
+            document.getElementById("private").disabled= true;
+            document.getElementById("public").disabled= true;
+                return false;
+            }
+        </script>
+
+        <style>
+                #profilepic{
+                    border-radius: 50%;
+                    height: 35px;
+                    width: 35px;
+                    margin-top: 5px;
+                  }
+                  #logo{
+                    height:45px;
+                    width:45px;
+                  }
+                /* Remove the navbar's default margin-bottom and rounded borders */ 
+                .navbar {
+                  margin-bottom: 0;
+                  border-radius: 0;
+                }
+                  body {
+                  padding-top: 50px;
+                }
+
+                /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+                .row.content {height: 8000px}
+
+                /* Set gray background color and 100% height */
+                .sidenav {
+                  padding-top: 20px;
+                  background-color: lightgray;
+                  height: 100%;
+                }
+
+                /* Set black background color, white text and some padding */
+                footer {
+                  background-color: #555;
+                  color: white;
+                  padding: 15px;
+                }
+                  #most-recent{
+                      font-size: 22px;
+                      margin-left: 0;
+                      text-align: left;
+                  }
+                  #most-liked{
+                      font-size: 22px;
+                      margin-left: 0;
+                      text-align: left;
+                  }
+                  #trending{
+                      font-size: 22px;
+                      margin-left: 0;
+                      text-align: left;
+                  }
+                  .well{
+                  font-size: 22px;
+                  border-width: 5px;  
+                  }
+            center img{
+                padding: 10px;
+            }
+
+
+                /* On small screens, set height to 'auto' for sidenav and grid */
+                @media screen and (max-width: 767px) {
+                  .sidenav {
+                    height: auto;
+                    padding: 15px;
+                  }
+                  .row.content {height:auto;} 
+                }
+                  #meme{
+                      height: 350px;
+                      width: auto;
+                  }
+                  #memeblockstyle{
+                    border: 1px solid gray;
+                    padding: 5px 20px;
+                    background-color: whitesmoke;
+                  }
+                  #memeblockstyle h1{
+                    margin-left: 5px;
+                  }
+                  #memeblockstyle center{
+                    border-radius: 25px;
+                    margin-left: 5px;
+                    border: 1px solid lightgray;
+                  }
+                  #memeblockstyle p{
+                    margin-left: 5px;
+                  }
+            full{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+            overflow: auto;
+            }
+            input[type=checkbox] {
+                height:17px;
+                width: 17px;    
+           /* For mobile, it's typically better to position checkbox on top of clickable
+              area and turn opacity to 0 instead. */
+        }
+            .container-fluid text-cente label{
+                font-size: 45px;
+            }
+        </style>
 </head>
 <body>
-    <a href="javascript:history.back()"><img src="./meme5.jpg" id="full"></a>
+        <nav class="navbar navbar-default navbar-fixed-top navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <a href = "./signed-in.html"> <img src="./salcy.png" height="45px" width="45px" ></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li><a>EMEMERALD</a></li>
+                <li><a href="./signed-in.html">Home</a></li>
+                <li><a href="./signed-in-about.html">About</a></li>
+                <li><a href="./signed-in-search.html">Search by tags</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="./user-profile.html">Logged in as Joshy</a></li>
+                <li><img src="./profile-pic.png" id="profilepic" alt="Avatar"></li>
+                <li><a href="./upload-meme.html">Upload a meme</a></li>
+                <li><a href="./logout.html">Log out</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    <div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <div id = 'most-recent'><p><a href="#"><strong>View Most Recent</strong></a></p></div>
+      <div id = 'most-liked'><p><a href="#"><strong>View Most Liked</strong></a></p></div>
+      <div id = 'trending'><p><a href="#"><strong>View Trending</strong></a></p></div>
+    </div>
+    <div class="col-sm-8 text-left">
+    <center><a href="javascript:history.back()"><img src="./meme5.jpg" height="300px" width="300px" id="full"></a></center>
+    <p>Posted by: <a href = './user-profile.html'>Joshy</a></p>
+      <p>Post is :<label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='public' checked disabled>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='private'id = 'private' disabled>Private </label></p>
+        <p>Edit meme tags:</p>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Funny' id = 'Funny'  disabled>Funny </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Sad' id = 'Sad'  disabled>Sad </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Relationships' id = 'Relationships'  disabled>Relationships </label> 
+            </div>
+            <div>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Social' id = 'Social' disabled>Social </label>
+            <label class="-inline"><input type="checkbox" value="" id = 'Disgusting' name = 'Disgusting' disabled>Disgusting </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = "Racists" id ="Racists" checked disabled>Racists </label>
+            </div>
+            <span style = "display:inline;">
+                <button type = 'button' onclick = 'edit();'>Edit tags</button>
+                <button type = 'button' onclick = 'save();'>Save tags</button>
+            </span>
+        </form>
+            <form method="post" enctype="multipart/form-data">
+            <div>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Salcy' id = 'Salcy'  disabled>Salcy </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Manzy' id = 'Manzy'  disabled>Manzy </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Ato' id = 'Ato'  disabled>Ato </label> 
+            </div>
+            <span style = "display:inline;">
+                <button type = 'button' onclick = 'enable();'>Edit shared users</button>
+                <button type = 'button' onclick = 'disable();'>Save shared users</button>
+            </span>
+                <br>
+            <span style = "display:inline;">
+                <button type = 'button' onclick = 'enable(); edit(); meddle();'>Edit Post</button>
+                <button type = 'button' onclick = 'disable(); save(); meddled();'>Save all</button>
+            </span>
+            <button type = 'button'>Delete Post</button>
+        </form>
+        </div>
+        <div class="col-sm-2 sidenav">
+          <div class="well">
+            <p>Titan gel.jpg</p>
+          </div>
+          <div class="well">
+            <p>MnF.gif</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>lazada.jpg</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>olx.gif</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>shopee.jpg</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>robust.gif</p>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
