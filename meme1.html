@@ -27,14 +27,14 @@
         <p>Edit meme tags:</p>
         <form method="post" enctype="multipart/form-data">
             <div>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Loli' id = 'Loli'  disabled>Loli </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Futanari' id = 'Futanari'  disabled>Futanari </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Ahegao' id = 'Ahegao'  disabled>Ahegao </label> 
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Funny' id = 'Funny'  disabled>Funny </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Sad' id = 'Sad'  disabled>Sad </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Relationships' id = 'Relationships'  disabled>Relationships </label> 
             </div>
             <div>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Oppai' id = 'Oppai' disabled>Oppai </label>
-            <label class="-inline"><input type="checkbox" value="" id = 'Netorare' disabled>Netorare </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = "Horror" id ="Horror" checked disabled>Horror </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Social' id = 'Social' disabled>Social </label>
+            <label class="-inline"><input type="checkbox" value="" id = 'Disgusting' name = 'Disgusting' disabled>Disgusting </label>
+            <label class="checkbox-inline"><input type="checkbox" value="" name = "Racists" id ="Racists" checked disabled>Racists </label>
             </div>
             <span style = "display:inline;">
                 <button type = 'button' onclick = 'edit();'>Edit tags</button>
@@ -62,21 +62,21 @@
             function edit() {
                 var private_checked = document.getElementById("private").checked
                 var public_checked = document.getElementById("private").checked
-            document.getElementById("Horror").disabled= false;
-            document.getElementById("Netorare").disabled= false;
-            document.getElementById("Loli").disabled= false;
-            document.getElementById("Futanari").disabled= false;
-            document.getElementById("Ahegao").disabled= false;
-            document.getElementById("Oppai").disabled= false;
+            document.getElementById("Funny").disabled= false;
+            document.getElementById("Sad").disabled= false;
+            document.getElementById("Relationships").disabled= false;
+            document.getElementById("Social").disabled= false;
+            document.getElementById("Disgusting").disabled= false;
+            document.getElementById("Racists").disabled= false;
                 return false;
 }
             function save() {
-            document.getElementById("Horror").disabled= true;
-            document.getElementById("Netorare").disabled= true;
-            document.getElementById("Loli").disabled= true;
-            document.getElementById("Futanari").disabled= true;
-            document.getElementById("Ahegao").disabled= true;
-            document.getElementById("Oppai").disabled= true;
+            document.getElementById("Funny").disabled= true;
+            document.getElementById("Sad").disabled= true;
+            document.getElementById("Relationships").disabled= true;
+            document.getElementById("Social").disabled= true;
+            document.getElementById("Disgusting").disabled= true;
+            document.getElementById("Racists").disabled= true;
                 return false;
             }
             function disable() {
