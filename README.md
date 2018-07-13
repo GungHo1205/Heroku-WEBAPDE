@@ -1,39 +1,227 @@
-# node-js-getting-started
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+<url>
+  <loc>https://black-ramen.herokuapp.com/</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/index.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/about.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/search.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/sign-up.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/login.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/inaccessible-meme.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/funny.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/sad.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/relationships.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/social.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/disgusting.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/racists.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-up.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-about.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-search.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/user-profile.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/upload-meme.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/logout.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme1.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme2.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme3.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme4.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme5.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme6.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme7.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme8.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme9.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme10.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme11.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme12.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme13.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme14.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/meme15.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-funny.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-sad.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-relationships.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-social.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-disgusting.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/signed-in-racists.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/uploaded-meme.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://black-ramen.herokuapp.com/user-profile2.html</loc>
+  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
 
-## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
-
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+</urlset>
