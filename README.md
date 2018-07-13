@@ -3,7 +3,7 @@
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/about.html" title=" About "> About </a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/search.html" title=" Search "> Search </a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/sign-up.html" title="Sign-Up">Sign-Up</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/login.html" title="Log-in">Log-in</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/login.html" title="Log-in">Login</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/inaccessible-meme.html" title="Ememerald">Inaccessible-meme</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/funny.html" title="Ememerald">Funny memes</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/sad.html" title="Ememerald">Sad memes</a></li>
@@ -18,7 +18,6 @@
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/user-profile.html" title="Ememerald">User-profile</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/upload-meme.html" title="Upload-meme| PrepBootstrap">Upload-meme</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/logout.html" title="Upload-meme| PrepBootstrap">Logout</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/logout.html" title="Logged-out">Logged-out</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme1.html" title="Meme">Meme1</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme2.html" title="Meme">Meme2</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme3.html" title="Meme">Meme3</a></li>
