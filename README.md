@@ -17,6 +17,7 @@
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-search.html" title=" Search "> Signed-in-search </a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/user-profile.html" title="Ememerald">User-profile</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/upload-meme.html" title="Upload-meme| PrepBootstrap">Upload-meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/logout.html" title="Upload-meme| PrepBootstrap">Logout</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/logout.html" title="Logged-out">Logged-out</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme1.html" title="Meme">Meme1</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme2.html" title="Meme">Meme2</a></li>
