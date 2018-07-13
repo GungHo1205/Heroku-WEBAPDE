@@ -5,12 +5,12 @@
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/sign-up.html" title="Sign-Up">Sign-Up</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/login.html" title="Log-in">Log-in</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/inaccessible-meme.html" title="Ememerald">Inaccessible-meme</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/funny.html" title="Ememerald">Funny</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/sad.html" title="Ememerald">Sad</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/relationships.html" title="Ememerald">Relationships</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/social.html" title="Ememerald">Social</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/disgusting.html" title="Ememerald">Disgusting</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/racists.html" title="Ememerald">Racists</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/funny.html" title="Ememerald">Funny memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/sad.html" title="Ememerald">Sad memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/relationships.html" title="Ememerald">Relationships memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/social.html" title="Ememerald">Social memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/disgusting.html" title="Ememerald">Disgusting memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/racists.html" title="Ememerald">Racist memes</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-up.html" title="https://black-ramen.herokuapp.com/signed-up.html">Signed-up</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in.html" title="Ememerald">Signed-in</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-about.html" title=" About "> Signed-in-about </a></li>
@@ -33,12 +33,12 @@
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme13.html" title="Meme">Meme13</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme14.html" title="Meme">Meme14</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/meme15.html" title="Meme">Meme15</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-funny.html" title="Ememerald">Signed-in-funny</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-sad.html" title="Ememerald">Signed-in-sad</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-relationships.html" title="Ememerald">Signed-in-relationships</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-social.html" title="Ememerald">Signed-in-social</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-disgusting.html" title="Ememerald">Signed-in-disgusting</a></li>
-<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-racists.html" title="Ememerald">Signed-in-racists</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-funny.html" title="Ememerald">Signed-in-funny memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-sad.html" title="Ememerald">Signed-in-sad memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-relationships.html" title="Ememerald">Signed-in-relationships memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-social.html" title="Ememerald">Signed-in-social memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-disgusting.html" title="Ememerald">Signed-in-disgusting memes</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-racists.html" title="Ememerald">Signed-in-racists memes</a></li>
 <li class="lpage"><a href="https://black-ramen.herokuapp.com/uploaded-meme.html" title="https://black-ramen.herokuapp.com/uploaded-meme.html">Uploaded-meme</a></li>
-<li class="lpage last-page"><a href="https://black-ramen.herokuapp.com/user-profile2.html" title="Ememerald">user-profile2</a></li>
+<li class="lpage last-page"><a href="https://black-ramen.herokuapp.com/user-profile2.html" title="Ememerald">User-profile2</a></li>
 </ul>
