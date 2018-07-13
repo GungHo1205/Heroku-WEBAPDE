@@ -20,25 +20,28 @@
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: palegreen;
+      background-color: lightgray;
       height: 100%;
     }
-          footer {
+    footer {
       background-color: #555;
       color: white;
       padding: 15px;
     }
     #most-recent{
       font-size: 22px;
-      border-width: 5px;  
+      border-width: 5px;
+      text-align: left;
       }
     #most-liked{
       font-size: 22px;
-      border-width: 5px;  
+      border-width: 5px;
+      text-align: left;  
       }
     #trending{
       font-size: 22px;
-      border-width: 5px;  
+      border-width: 5px;
+      text-align: left;  
       }
     .well{
       font-size: 22px;
@@ -92,12 +95,12 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a>EMEMERALD</a></li>
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="signed-in.html">Home</a></li>
         <li><a href="./signed-in-about.html">About</a></li>
         <li><a href="./signed-in-search.html">Search by tags</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="./user-profile.html">Logged in as Henlo</a></li>
+        <li class="active"><a href="./user-profile.html">Logged in as Henlo</a></li>
         <li><img src="./profile-pic.png" id="profilepic" alt="Avatar"></li>
         <li><a href="./upload-meme.html">Upload a meme</a></li>
         <li><a href="./logout.html">Log out</a></li>
@@ -221,10 +224,22 @@ document.getElementById(divId).style.display = 'none';
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
-        <p id = 'ad 1'>Titan gel.jpg</p>
+        <p id = 'ad 1'>Titan-gel.jpg</p>
       </div>
       <div class="well">
         <p id = 'ad 2'>MnF.gif</p>
+      </div>
+      <div class="well">
+        <p id = 'ad 2'>lazada.jpg</p>
+      </div>
+      <div class="well">
+        <p id = 'ad 2'>olx.gif</p>
+      </div>
+      <div class="well">
+        <p id = 'ad 2'>shopee.jpg</p>
+      </div>
+      <div class="well">
+        <p id = 'ad 2'>robust.gif</p>
       </div>
     </div>
   </div>
