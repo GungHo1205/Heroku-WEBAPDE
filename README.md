@@ -1,227 +1,57 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<body>
+	<div id="top">
+		<nav>black-ramen.herokuapp.com HTML Site Map</nav>
+		<h3>
+<span>Last updated: 2018, July 13<br />
+Total pages: %TOTALURLS%</span>
+<a href="https://black-ramen.herokuapp.com">black-ramen.herokuapp.com Homepage</a>
+</h3></div>
+	<div id="cont">
+		<ul class="level-0">
 
-
-<url>
-  <loc>https://black-ramen.herokuapp.com/</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/index.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/about.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/search.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/sign-up.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/login.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/inaccessible-meme.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/funny.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/sad.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/relationships.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/social.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/disgusting.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/racists.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-up.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-about.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-search.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/user-profile.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/upload-meme.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/logout.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme1.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme2.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme3.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme4.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme5.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme6.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme7.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme8.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme9.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme10.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme11.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme12.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme13.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme14.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/meme15.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-funny.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-sad.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-relationships.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-social.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-disgusting.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/signed-in-racists.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/uploaded-meme.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://black-ramen.herokuapp.com/user-profile2.html</loc>
-  <lastmod>2018-07-13T14:49:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-
-
-</urlset>
+            <li class="lhead">/  <span class="lcount">43 pages</span></li>
+            
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/index.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/about.html" title=" About "> About </a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/search.html" title=" Search "> Search </a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/sign-up.html" title="Sign-Up">Sign-Up</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/login.html" title="Log-in">Log-in</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/inaccessible-meme.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/funny.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/sad.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/relationships.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/social.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/disgusting.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/racists.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-up.html" title="https://black-ramen.herokuapp.com/signed-up.html">https://black-ramen.herokuapp.com/signed-up.html</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-about.html" title=" About "> About </a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-search.html" title=" Search "> Search </a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/user-profile.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/upload-meme.html" title="Bootstrap Upload Control Template | PrepBootstrap">Bootstrap Upload Control Template | PrepBootstrap</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/logout.html" title="Logged-out">Logged-out</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme1.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme2.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme3.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme4.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme5.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme6.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme7.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme8.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme9.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme10.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme11.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme12.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme13.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme14.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/meme15.html" title="Meme">Meme</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-funny.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-sad.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-relationships.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-social.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-disgusting.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/signed-in-racists.html" title="Ememerald">Ememerald</a></li>
+<li class="lpage"><a href="https://black-ramen.herokuapp.com/uploaded-meme.html" title="https://black-ramen.herokuapp.com/uploaded-meme.html">https://black-ramen.herokuapp.com/uploaded-meme.html</a></li>
+<li class="lpage last-page"><a href="https://black-ramen.herokuapp.com/user-profile2.html" title="Ememerald">Ememerald</a></li>
+</ul>
