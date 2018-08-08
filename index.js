@@ -24,26 +24,30 @@ const userSchema = mongoose.Schema({
     password : String,
     shortBio: String,
     meme: [{
-        memeID: String,
+ //       memeID: String,
         memeTitle: String,
-        memeTag: [{
-            tag:String
-        }],
+        memeTag: String,
+//        [{
+//            tag:String
+//        }],
         memeOwner: String,
-        memeDate: String,
+ //       memeDate: String,
         commentNumber: Number
     }]
 }) // user schema
 
 const memeSchema = mongoose.Schema({
-        memeID: String,
+ //       memeID: String,
         memeTitle: String,
-        memeTag: [{ // array of tags
-                tag:String   
-        }],
+        memeTag: String,
+//    [{ // array of tags
+//                tag:String   
+//        }],
+        image: String,
         memeOwner: String,
-        memeDate: String,
-        commentNumber: Number
+ //       memeDate: String,
+ //       commentNumber: Number,
+        memePrivacy: String
 }) // meme schema
 
 const userModel = mongoose.model('user', userSchema); // model used for database of userinfo
@@ -58,6 +62,14 @@ server.use(session({
 
 function addUser(username,image, password, emailAddress, shortBio, callback){
   const instance = userModel({ username: username, image: image, password: password, emailAddress: emailAddress, shortBio: shortBio });
+  
+  instance.save(function (err) {
+    if(err) return console.error(err);
+    callback();
+  });
+}
+function addMeme(memeTitle,memeTag,image, memeOwner, memePrivacy, callback){
+  const instance = memeModel({ memeTitle: memeTitle, memeTag: memeTag,image: image, memeOwner: memeOwner, memePrivacy: memePrivacy });
   
   instance.save(function (err) {
     if(err) return console.error(err);
@@ -150,10 +162,40 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
       resp.render('./pages/signed-up');
   })
   server.get('/upload-meme', function(req,resp){
+//    var form = new formidable.IncomingForm();
+//    form.parse(req, function (err, fields, files) {
+//      var oldpath = files.memePicture.path;
+//      var newpath = __dirname + '\\public\\new\\' + files.memePicture.name;
+//      fs.rename(oldpath, newpath, function (err) {
+//        if (err) throw err;
+//        addMeme(fields.memeTitle, fields.memeTag,files.memePicture.name, fields.memeOwner, fields.memePrivacy, function(){
+//          resp.redirect('/');
+//        });//addMeme
+//      });//rename
+//    });//parse
       resp.render('./pages/upload-meme');
-  })
-  server.get('/uploaded-meme', function(req,resp){
-      resp.render('./pages/uploaded-meme');
+  }) 
+
+
+  server.post('/uploaded-meme', function(req,resp){
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function (err, fields, files) {
+    console.log(fields.memeTag);
+//    var array = memeTag.map(function(tag){
+//        return tag.value;
+//    });
+      var oldpath = files.image.path;
+      var newpath = __dirname + '\\public\\new\\' + files.image.name;
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        addMeme(fields.memeTitle, fields.memeTag, files.image.name, req.session.username, fields.memePrivacy, function(){
+//            for(i=0; i <= hold.length; i++)
+//            console.log(fields.memeTag);
+        });//addMeme
+      });//rename
+    });//parse
+      resp.render('./pages/uploaded-meme'   );
   })
   server.get('/user-profile', function(req,resp){
       var findUser = userModel.findOne({username: req.session.username})
@@ -174,46 +216,5 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
                     }
       })
   })
-//  .get('/index', (req, res) => res.sendFile(path.join(__dirname,'index.html')))
-//  .get('/about.html', (req, res) => res.sendFile(path.join(__dirname,'about.html')))
-//  .get('/search.html', (req, res) => res.sendFile(path.join(__dirname,'search.html')))
-//  .get('/sign-up.html', (req, res) => res.sendFile(path.join(__dirname,'sign-up.html')))
-//  .get('/signed-in.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in.html')))
-//  .get('/logout.html', (req, res) => res.sendFile(path.join(__dirname,'logout.html')))
-//  .get('/signed-up.html', (req, res) => res.sendFile(path.join(__dirname,'signed-up.html')))
-//  .get('/signed-in-about.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-about.html')))
-//  .get('/signed-in-search.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-search.html')))
-//  .get('/user-profile.html', (req, res) => res.sendFile(path.join(__dirname,'user-profile.html')))
-//  .get('/user-profile2.html', (req, res) => res.sendFile(path.join(__dirname,'user-profile2.html')))
-//  .get('/upload-meme.html', (req, res) => res.sendFile(path.join(__dirname,'upload-meme.html')))
-//  .get('/uploaded-meme.html', (req, res) => res.sendFile(path.join(__dirname,'uploaded-meme.html')))
-//  .get('/meme1.html', (req, res) => res.sendFile(path.join(__dirname,'meme1.html')))
-//  .get('/meme2.html', (req, res) => res.sendFile(path.join(__dirname,'meme2.html')))
-//  .get('/meme3.html', (req, res) => res.sendFile(path.join(__dirname,'meme3.html')))
-//  .get('/meme4.html', (req, res) => res.sendFile(path.join(__dirname,'meme4.html')))
-//  .get('/meme5.html', (req, res) => res.sendFile(path.join(__dirname,'meme5.html')))
-//  .get('/meme6.html', (req, res) => res.sendFile(path.join(__dirname,'meme6.html')))
-//  .get('/meme7.html', (req, res) => res.sendFile(path.join(__dirname,'meme7.html')))
-//  .get('/meme8.html', (req, res) => res.sendFile(path.join(__dirname,'meme8.html')))
-//  .get('/meme9.html', (req, res) => res.sendFile(path.join(__dirname,'meme9.html')))
-//  .get('/meme10.html', (req, res) => res.sendFile(path.join(__dirname,'meme10.html')))
-//  .get('/meme11.html', (req, res) => res.sendFile(path.join(__dirname,'meme11.html')))
-//  .get('/meme12.html', (req, res) => res.sendFile(path.join(__dirname,'meme12.html')))
-//  .get('/meme13.html', (req, res) => res.sendFile(path.join(__dirname,'meme13.html')))
-//  .get('/meme14.html', (req, res) => res.sendFile(path.join(__dirname,'meme14.html')))
-//  .get('/meme15.html', (req, res) => res.sendFile(path.join(__dirname,'meme15.html')))
-//  .get('/inaccessible-meme.html', (req, res) => res.sendFile(path.join(__dirname,'inaccessible-meme.html')))
-//  .get('/funny.html', (req, res) => res.sendFile(path.join(__dirname,'funny.html')))
-//  .get('/sad.html', (req, res) => res.sendFile(path.join(__dirname,'sad.html')))
-//  .get('/relationships.html', (req, res) => res.sendFile(path.join(__dirname,'relationships.html')))
-//  .get('/social.html', (req, res) => res.sendFile(path.join(__dirname,'social.html')))
-//  .get('/disgusting.html', (req, res) => res.sendFile(path.join(__dirname,'disgusting.html')))
-//  .get('/racists.html', (req, res) => res.sendFile(path.join(__dirname,'racists.html')))
-//  .get('/signed-in-funny.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-funny.html')))
-//  .get('/signed-in-sad.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-sad.html')))
-//  .get('/signed-in-relationships.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-relationships.html')))
-//  .get('/signed-in-social.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-social.html')))
-//  .get('/signed-in-disgusting.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-disgusting.html')))
-//  .get('/signed-in-racists.html', (req, res) => res.sendFile(path.join(__dirname,'signed-in-racists.html')))
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

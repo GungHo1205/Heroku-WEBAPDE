@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,33 +28,34 @@
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <form method="post" enctype="multipart/form-data">
-            <input type="file" id="files" name="files" multiple="multiple" />
+              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post">
+            <input type="file" id="image" name="image"/>
             <br>
+            <p>Enter meme Title</p>
+            <input type = 'text' name = 'memeTitle'>
             <p>Select your tags!</p>
             <div>
-            <label class="checkbox-inline"><input type="checkbox" value="">Funny </label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Sad </label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Relationships </label> 
+            <label class="checkbox-inline"><input type="checkbox" value="Funny" name = 'memeTag'>Funny </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Sad" name = 'memeTag'>Sad </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Relationships" name = 'memeTag'>Relationships </label> 
             </div>
             <div>
-            <label class="checkbox-inline"><input type="checkbox" value="">Social </label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Disgusting </label>
-            <label class="checkbox-inline"><input type="checkbox" value="">Racists </label> 
+            <label class="checkbox-inline"><input type="checkbox" value="Social" name = 'memeTag'>Social </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Disgusting" name = 'memeTag'>Disgusting </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Racists" name = 'memeTag'>Racists </label> 
+            <input type = 'text' name = 'memeTag'>
             </div>
             <div class="form-group">
               <label for="share">Share to users:</label>
-              <textarea class="form-control" rows="1" id="share"></textarea>
+               <input type = 'text' name = 'memeShare'>
             </div> 
             <div>
-                <label class="radio-inline"><input type="radio" name="optradio">Public</label>
-                <label class="radio-inline"><input type="radio" name="optradio">Private</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public'>Public</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private'>Private</label>
             </div>
             <p style="text-align: right; margin-top: 20px;">
+            <input class="btn btn-lg btn-primary btn-block" type = "submit" value='Upload Meme'>
             <a href="javascript:history.back()" class="btn btn-lg btn-secondary">Cancel Upload</a>
-            <a href = '/uploaded-meme' class="btn btn-lg btn-primary">Upload Meme</a>
-
-                
             </p>
         </form>
     </div>
