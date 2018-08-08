@@ -156,7 +156,23 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
       resp.render('./pages/uploaded-meme');
   })
   server.get('/user-profile', function(req,resp){
-      resp.render('./pages/user-profile');
+      var findUser = userModel.findOne({username: req.session.username})
+      findUser.then((foundUser)=>
+        {
+            if(foundUser)
+            {
+                        resp.render('./pages/user-profile',{username:req.session.username,
+                         image:foundUser.image,
+                         shortBio:foundUser.shortBio
+                        });
+                   
+            }
+        
+      else
+                    {
+                        resp.redirect('./log-in');
+                    }
+      })
   })
 //  .get('/index', (req, res) => res.sendFile(path.join(__dirname,'index.html')))
 //  .get('/about.html', (req, res) => res.sendFile(path.join(__dirname,'about.html')))

@@ -82,32 +82,11 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a href = "/index"> <img src="./salcy.png" height="45px" width="45px" ></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a>EMEMERALD</a></li>
-        <li><a href="/index">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/search">Search by tags</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="/user-profile">Logged in as Joshy</a></li>
-        <li><img src="./profile-pic.png" id="profilepic" alt="Avatar"></li>
-        <li><a href="/upload-meme">Upload a meme</a></li>
-        <li><a href="/logout">Log out</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<% if(username){ %>
+    <%- include loggedNavBar.ejs%>
+<% } else { %>
+    <%- include unloggedNavBar.ejs%>
+<%    } %>
   
 <div class="container-fluid text-center">    
   <div class="row content">
@@ -117,13 +96,13 @@
       <div id = 'trending'><p><a href="#"><strong>View Trending</strong></a></p></div>
     </div>
     <div class="col-sm-8 text-left"> 
-      <img src = "./profile-pic.png" class="profilepic">
+      <img src = '/new/<%=image%>' class = 'profilepic'>
         <br>
         <h3>Change Profile Picture:</h3>
         <input type="file" id="files" name="files" multiple="multiple"/>
         <button onclick = "location.href = './user-profile.html'"><strong>Upload new profile picture</strong></button>
-      <h1>Fullname:</h1>
-      <h3>Joshy Kudasai</h3>
+      <h1>Username:</h1>
+      <h3><%=username%></h3>
       <hr>
       <h1>Gender:</h1>
       <h3>Male</h3>
@@ -135,7 +114,7 @@
       <h3>06/24/1998</h3>
       <hr>
       <h1>Bio:</h1>
-      <h3>hello world</h3>
+      <h3><%=shortBio%></h3>
       <hr>
       <input type="button" value="Edit user info" name="edit">
         <div class="container-fluid bg-3 text-center">    
