@@ -217,7 +217,4 @@ function addMeme(memeTitle,memeTag,image, memeOwner, memePrivacy, callback){
       })
   })
 
-
-
-
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
