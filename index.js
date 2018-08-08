@@ -69,14 +69,15 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   server.set('view engine', 'ejs');
 
   server.get('/', function(req,resp){
-    if(req.session.username !== undefined){
-         console.log(req.session.username);
-      resp.render('./pages/index',{username:req.session.username, header:'include header-logged-in.ejs'});
-    }else
-    {
-         console.log(req.session.username);
-      resp.render('./pages/index',{username:'joshy', header:'include header-logged-out.ejs'})
-    }
+      resp.render('./pages/index',{username:req.session.username});
+//    if(req.session.username !== undefined){
+//         console.log(req.session.username);
+//      resp.render('./pages/index',{username:req.session.username});
+//    }else
+//    {
+//         console.log(req.session.username);
+//      resp.render('./pages/index',{username:'joshy'})
+//    }
   })
 
   server.get('/log-in', function(req,resp){
@@ -98,6 +99,7 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
       resp.render('./pages/index');
   })
   server.get('/logout', function(req,resp){
+      req.session.destroy();
       resp.render('./pages/logout');
   })
   server.get('/meme1', function(req,resp){
