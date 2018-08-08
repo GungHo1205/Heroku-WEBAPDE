@@ -8,6 +8,7 @@ const session = require('express-session')
 const server = express();   
 const formidable = require('formidable');
 const fs = require('fs');//used for file upload
+const crypto = require("crypto");
 
 mongoose.connect('mongodb://BlackRamen:umami24@ds215502.mlab.com:15502/heroku_0dnhlnfk',
 {
@@ -113,13 +114,17 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   })
 
   server.post('/signed-up', function(req,resp){
+//      console.log(req.body.password);
+//      var password = req.body.password;
+      
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
+        var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
       var oldpath = files.image.path;
       var newpath = __dirname + '\\public\\new\\' + files.image.name;
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
-        addUser(fields.username, files.image.name, fields.password ,fields.emailAddress, fields.shortBio, function(){
+        addUser(fields.username, files.image.name, hashedpassword ,fields.emailAddress, fields.shortBio, function(){
           resp.redirect('/');
         });//addUser
       });//rename
