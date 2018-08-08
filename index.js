@@ -86,8 +86,26 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   })
 
   server.post('/log-in=successful',urlencoder, function(req,resp){
-      req.session.username = req.body.username;
-      resp.redirect('./');
+      var password = req.body.password;
+      var hashedpassword = crypto.createHash("md5").update(req.body.password).digest("hex")
+      var findUser = userModel.findOne({username: req.body.username})
+      findUser.then((foundUser)=>
+        {
+            if(foundUser)
+            {
+               if(foundUser.password === hashedpassword)
+                   {
+                       req.session.username = req.body.username;
+                        resp.render('./pages/index',{username:req.session.username});
+                   }
+            }
+        
+      else
+                    {
+                        resp.redirect('./log-in');
+                    }
+      })
+      
   })
 
   server.get('/about', function(req,resp){
@@ -114,9 +132,6 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   })
 
   server.post('/signed-up', function(req,resp){
-//      console.log(req.body.password);
-//      var password = req.body.password;
-      
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
         var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
