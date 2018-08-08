@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ememerald</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+	  #logo{
+		height:45px;
+		width:45px;
+	  }
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+      body {
+      padding-top: 50px;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 800px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: lightgray;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+      #most-recent{
+          font-size: 22px;
+          margin-left: 0;
+          text-align: left;
+      }
+      #most-liked{
+          font-size: 22px;
+          margin-left: 0;
+          text-align: left;
+      }
+      #trending{
+          font-size: 22px;
+          margin-left: 0;
+          text-align: left;
+      }
+      .well{
+      font-size: 22px;
+      border-width: 5px;  
+      }
+	  center img:
+		  
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+      #meme{
+          height: 350px;
+          width: auto;
+      }
+      #memeblockstyle{
+        border: 1px solid gray;
+        padding: 5px 20px;
+        background-color: whitesmoke;
+      }
+      #memeblockstyle h1{
+        margin-left: 5px;
+      }
+      #memeblockstyle center{
+        border-radius: 25px;
+        margin-left: 5px;
+        border: 1px solid lightgray;
+      }
+      #memeblockstyle p{
+        margin-left: 5px;
+      }
+      center{
+          padding: 25px;
+      }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+		<span id = "logo"><a href = "/index" class ="photo"> <img src="./salcy.png" height="45px" width="45px"></a></span>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a>EMEMERALD</a></li>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/search">Search by tags</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/sign-up">Sign up</a></li>
+        <li><a href="/log-in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+    <center>
+        <p><strong>Sorry the page is inaccessible. Please log in <a href = '/log-in'>here</a> or <a href="javascript:history.back()">Go Back</a></strong></p>
+    </center>
+    
+
+
+
+</body>
+</html>

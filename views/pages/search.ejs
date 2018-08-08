@@ -1,16 +1,15 @@
 <html>
 <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="./icon" href ="./public/favicon.png">
-    <title> About </title>
+    <title> Search </title>
     <style>
-        center{
-            font-family: sans-serif;
-            font-weight: bolder;
+        #searchicon{
+            height: 200px;
         }
         body{
             background-color: lightgray;
         }
+
     </style>
 </head>
 <body>
@@ -22,14 +21,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a href = "/index"> <img src="./salcy.png"  height="45px" width="45px"></a>
+      <a href = "/index"> <img src="./salcy.png" height="45px" width="45px"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a>EMEMERALD</a></li>
-        <li><a href="/index">Home</a></li>
-        <li class="active"><a href="#">About</a></li>
-        <li><a href="/search">Search by tags</a></li>
+        <li ><a href="/index">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li class="active"><a href="#">Search by tags</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/sign-up">Sign up</a></li>
@@ -39,11 +38,18 @@
   </div>
 </nav>
     <center>
-<div id="intro">
-    <div><img src="./happy.jpg"></div><br>
-    <div><p id="Main">Welcome to Ememerald! a place to find all the best memes in the world!</p></div>
-</div>
-        </center>
+    <img src="./search.png" id="searchicon">
+    <form>
+        <span><input type="text" name="searchkey"></span>
+        <span><input type="button" name="search" value="Search"></span> 
+    </form>
+    <p><a href = './funny.html'>Funny</a></p>
+    <p><a href = './sad.html'>Sad</a></p>
+    <p><a href = './relationships.html'>Relationships</a></p>
+    <p><a href = './social.html'>Social</a></p>
+    <p><a href = './disgusting.html'>Disgusting</a></p>
+    <p><a href = './racists.html'>Racists</a></p>
+    </center>
 </body>
 
 </html>

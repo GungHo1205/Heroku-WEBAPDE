@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="./icon" href="./favicon.ico">
+
+    <title>Sign-Up</title>
+      <style>
+          #inputPassword2{
+              margin-top:-11px;
+          }
+          html{
+              background-color: palegreen;
+          }
+      </style>
+
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet"> <!--used for bootstrap design-->
+    <link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> <!--used for bootstrap design-->
+    <link href="./signin.css" rel="stylesheet"> <!--used for bootstrap design-->
+    <script src="./assets/js/ie-emulation-modes-warning.js"></script> <!--used for bootstrap design-->
+  </head>
+
+  <body>
+
+    <div class="container">
+        <center>
+        <img src="./salcy.png" height="150px" width="150px">
+        </center>
+      <form action='/signed-up'class="form-signin" enctype="multipart/form-data" method = "post">
+        <h2 class="form-signin-heading">Please sign up</h2>
+        <input type="file" id="image" name="image"/>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="text" id="username" class="form-control" placeholder="Username" name = 'username' required autofocus >
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name = 'emailAddress' required autofocus >
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name = 'password' required>
+        <label for="shortBio" class="sr-only">Short Bio</label>
+        <input type="text" id="shortBio" class="form-control" placeholder="Short bio" name = 'shortBio' required>
+        <div class="checkbox">
+            
+        </div>
+        <input class="btn btn-lg btn-primary btn-block" type = "submit" value='Sign up'>
+        <a href="javascript:history.back()" class="btn btn-lg btn-secondary">Cancel sign up</a>
+        <p>Already have an account? <a href ="/log-in"><strong>Login here!</strong></a></p>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
