@@ -13,6 +13,10 @@ mongoose.connect('mongodb://BlackRamen:umami24@ds215502.mlab.com:15502/heroku_0d
 {
     useNewUrlParser: true
 });
+
+const urlencoder = bodyparser.urlencoded({
+    extended: false
+})
 const userSchema = mongoose.Schema({
     username : String,
     image: String,
@@ -65,11 +69,25 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   server.set('view engine', 'ejs');
 
   server.get('/', function(req,resp){
-      resp.render('./pages/index');
+    if(req.session.username !== undefined){
+         console.log(req.session.username);
+      resp.render('./pages/index',{username:req.session.username, header:'include header-logged-in.ejs'});
+    }else
+    {
+         console.log(req.session.username);
+      resp.render('./pages/index',{username:'joshy', header:'include header-logged-out.ejs'})
+    }
   })
+
   server.get('/log-in', function(req,resp){
       resp.render('./pages/log-in');
   })
+
+  server.post('/log-in=successful',urlencoder, function(req,resp){
+      req.session.username = req.body.username;
+      resp.redirect('./');
+  })
+
   server.get('/about', function(req,resp){
       resp.render('./pages/about');
   })
@@ -98,7 +116,6 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
       var oldpath = files.image.path;
       var newpath = __dirname + '\\public\\new\\' + files.image.name;
       fs.rename(oldpath, newpath, function (err) {
-        console.log('file transfer started');
         if (err) throw err;
         addUser(fields.username, files.image.name, fields.password ,fields.emailAddress, fields.shortBio, function(){
           resp.redirect('/');
