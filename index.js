@@ -8,6 +8,7 @@ const session = require('express-session')
 const server = express();   
 const formidable = require('formidable');
 const fs = require('fs');//used for file upload
+const crypto = require("crypto");
 
 mongoose.connect('mongodb://BlackRamen:umami24@ds215502.mlab.com:15502/heroku_0dnhlnfk',
 {
@@ -69,14 +70,15 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   server.set('view engine', 'ejs');
 
   server.get('/', function(req,resp){
-    if(req.session.username !== undefined){
-         console.log(req.session.username);
-      resp.render('./pages/index',{username:req.session.username, header:'include header-logged-in.ejs'});
-    }else
-    {
-         console.log(req.session.username);
-      resp.render('./pages/index',{username:'joshy', header:'include header-logged-out.ejs'})
-    }
+      resp.render('./pages/index',{username:req.session.username});
+//    if(req.session.username !== undefined){
+//         console.log(req.session.username);
+//      resp.render('./pages/index',{username:req.session.username});
+//    }else
+//    {
+//         console.log(req.session.username);
+//      resp.render('./pages/index',{username:'joshy'})
+//    }
   })
 
   server.get('/log-in', function(req,resp){
@@ -84,27 +86,46 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   })
 
   server.post('/log-in=successful',urlencoder, function(req,resp){
-      req.session.username = req.body.username;
-      resp.redirect('./');
+      var password = req.body.password;
+      var hashedpassword = crypto.createHash("md5").update(req.body.password).digest("hex")
+      var findUser = userModel.findOne({username: req.body.username})
+      findUser.then((foundUser)=>
+        {
+            if(foundUser)
+            {
+               if(foundUser.password === hashedpassword)
+                   {
+                       req.session.username = req.body.username;
+                        resp.render('./pages/index',{username:req.session.username});
+                   }
+            }
+        
+      else
+                    {
+                        resp.redirect('./log-in');
+                    }
+      })
+      
   })
 
   server.get('/about', function(req,resp){
-      resp.render('./pages/about');
+      resp.render('./pages/about', {username:req.session.username});
   })
   server.get('/inaccessible-meme', function(req,resp){
-      resp.render('./pages/inaccessible-meme');
+      resp.render('./pages/inaccessible-meme', {username:req.session.username});
   })
   server.get('/index', function(req,resp){
-      resp.render('./pages/index');
+      resp.render('./pages/index', {username:req.session.username});
   })
   server.get('/logout', function(req,resp){
-      resp.render('./pages/logout');
+      req.session.destroy();
+      resp.render('./pages/logout', {username:req.session.username});
   })
   server.get('/meme1', function(req,resp){
-      resp.render('./pages/meme1');
+      resp.render('./pages/meme1', {username:req.session.username});
   })
   server.get('/search', function(req,resp){
-      resp.render('./pages/search');
+      resp.render('./pages/search', {username:req.session.username});
   })
   server.get('/sign-up', function(req,resp){
       resp.render('./pages/sign-up');
@@ -113,11 +134,12 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
   server.post('/signed-up', function(req,resp){
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
+        var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
       var oldpath = files.image.path;
       var newpath = __dirname + '\\public\\new\\' + files.image.name;
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
-        addUser(fields.username, files.image.name, fields.password ,fields.emailAddress, fields.shortBio, function(){
+        addUser(fields.username, files.image.name, hashedpassword ,fields.emailAddress, fields.shortBio, function(){
           resp.redirect('/');
         });//addUser
       });//rename
@@ -134,7 +156,23 @@ function addUser(username,image, password, emailAddress, shortBio, callback){
       resp.render('./pages/uploaded-meme');
   })
   server.get('/user-profile', function(req,resp){
-      resp.render('./pages/user-profile');
+      var findUser = userModel.findOne({username: req.session.username})
+      findUser.then((foundUser)=>
+        {
+            if(foundUser)
+            {
+                        resp.render('./pages/user-profile',{username:req.session.username,
+                         image:foundUser.image,
+                         shortBio:foundUser.shortBio
+                        });
+                   
+            }
+        
+      else
+                    {
+                        resp.redirect('./log-in');
+                    }
+      })
   })
 //  .get('/index', (req, res) => res.sendFile(path.join(__dirname,'index.html')))
 //  .get('/about.html', (req, res) => res.sendFile(path.join(__dirname,'about.html')))
