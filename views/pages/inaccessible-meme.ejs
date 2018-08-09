@@ -94,12 +94,7 @@
   </style>
 </head>
 <body>
-
-<% if(username){ %>
-    <%- include loggedNavBar.ejs%>
-<% } else { %>
     <%- include unloggedNavBar.ejs%>
-<%    } %>
   
     <center>
         <p><strong>Sorry the page is inaccessible. Please log in <a href = '/log-in'>here</a> or <a href="javascript:history.back()">Go Back</a></strong></p>
