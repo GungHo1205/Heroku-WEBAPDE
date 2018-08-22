@@ -3,7 +3,7 @@ const mongoose = require('./connectionModel').connection;
 var memeSchema = mongoose.Schema({
     _postID: mongoose.SchemaTypes.ObjectId,
         memeTitle: String,
-        memeTag: String,
+        memeTag: String ,
         memeImage: String,
         memeOwner: String,
         memePrivacy: String,
@@ -33,7 +33,14 @@ function viewMeme(callback){
   });
 }
 
+function searchMeme(search, callback){
+  memeModel.find({memeTag: {$regex: search, $options: 'i'}}, function (err, list) {
+    if(err) return console.error(err);
+    callback(list);
+  });
+}
 
+module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
 module.exports.addMeme = addMeme;
 module.exports.viewMeme = viewMeme;

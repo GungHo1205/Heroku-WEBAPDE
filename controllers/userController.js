@@ -23,9 +23,6 @@ server.get('/index', function(req,resp){
 server.get('/meme1', function(req,resp){
       resp.render('./pages/meme1',{username:req.session.username});
   });
-server.get('/search', function(req,resp){
-      resp.render('./pages/search',{username:req.session.username});
-  });
 server.get('/logout', function(req,resp){
       req.session.destroy();
       resp.render('./pages/logout');
@@ -71,7 +68,7 @@ server.get('/user-profile', function(req,resp){
       })
   });
 
-  server.post('/log-in=successful', function(req,resp){ 
+  server.post('/log-in=successful', function(req,resp){
       var form = new formidable.IncomingForm()
 //      var password = req.body.password;
       
@@ -83,10 +80,14 @@ server.get('/user-profile', function(req,resp){
             if(foundUser)
             {
                if(foundUser.password === hashedpassword)
-                   {
-                       req.session.username = fields.username;
+                    if (fields.rememberMe) {
+						req.session.cookie.expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7 * 3)
+						req.session.maxAge = 1000 * 60 * 60 * 24 * 7 * 3
+					}
+                console.log(fields.rememberMe);
+                        req.session.rememberMe = fields.rememberMe
+                        req.session.username = fields.username;
                         resp.redirect('/');
-                   }
             }
         
       else

@@ -38,26 +38,6 @@ function pushMeme(meme, username){
     console.log(userModel.meme);
 }
 
-    //    console.log(memes)
-//       userModel.findOneAndUpdate(
-//            {username:username},
-//        {$push: {memes:memes}
-//        }
-//        );
-//    console.log(meme);
-//    console.log(username);
-//    findUser = userModel.findOne({username:username})
-//    findUser.then((foundUser)=>{
-//        console.log('henlo');
-//        foundUser.meme.push(meme);
-//        console.log(foundUser.meme);
-//        console.log(foundUser);
-////        foundUser.update({$push: {meme:meme}});
-////        console.log(foundUser.meme);
-////        console.log(foundUser);
-//        foundUser.save();
-//    })
-
 
 module.exports.findOne = findOne;   
 module.exports.pushMeme = pushMeme;   

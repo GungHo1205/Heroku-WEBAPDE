@@ -1,10 +1,12 @@
 <html>
 <head>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- style from bootstrap used-->
+    <link rel="icon" href="./icon.png">
     <title> Search </title>
     <style>
         #searchicon{
             height: 200px;
+            margin-top: 50px;
         }
         body{
             background-color: lightgray;
@@ -21,10 +23,18 @@
    
     <center>
     <img src="./search.png" id="searchicon">
-    <form>
-        <span><input type="text" name="searchkey"></span>
-        <span><input type="button" name="search" value="Search"></span> 
+        <span>
+    <form method = 'post' id = 'search' action = '/searched' enctype="multipart/form-data">
+        <br>
+        <span>
+                <textarea rows="2" cols="45" name = 'search' form = 'search' placeholder = 'Type your memes here separated by commas(,)'></textarea>
+            </span>
+        <div>
+        <input type="submit" value="Search">
+            </div>
     </form>
+            </span>
+        <br>
     <p><a href = './funny.html'>Funny</a></p>
     <p><a href = './sad.html'>Sad</a></p>
     <p><a href = './relationships.html'>Relationships</a></p>

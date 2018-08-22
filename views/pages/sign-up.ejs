@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="./icon" href="./favicon.ico">
-
+    <link rel="icon" href="./icon.png">
     <title>Sign-Up</title>
       <style>
-          #inputPassword2{
-              margin-top:-11px;
-          }
           html{
               background-color: palegreen;
           }
+          #shortBio{
+              margin-top:-9.5px;
+          }
       </style>
-
-    <link href="./dist/css/bootstrap.min.css" rel="stylesheet"> <!--used for bootstrap design-->
-    <link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> <!--used for bootstrap design-->
-    <link href="./signin.css" rel="stylesheet"> <!--used for bootstrap design-->
-    <script src="./assets/js/ie-emulation-modes-warning.js"></script> <!--used for bootstrap design-->
+    <link href="./stylesheets/Login.css" rel="stylesheet"> <!--used for bootstrap design-->
+    <link href="./stylesheets/signin.css" rel="stylesheet"> <!--used for bootstrap design-->
   </head>
 
   <body>
@@ -40,10 +31,7 @@
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name = 'password' required>
         <label for="shortBio" class="sr-only">Short Bio</label>
-        <input type="text" id="shortBio" class="form-control" placeholder="Short bio" name = 'shortBio' required>
-        <div class="checkbox">
-            
-        </div>
+        <input type="text" id="shortBio" class="form-control" placeholder="Short bio" name = 'shortBio'>
         <input class="btn btn-lg btn-primary btn-block" type = "submit" value='Sign up'>
         <a href="javascript:history.back()" class="btn btn-lg btn-secondary">Cancel sign up</a>
         <p>Already have an account? <a href ="/log-in"><strong>Login here!</strong></a></p>

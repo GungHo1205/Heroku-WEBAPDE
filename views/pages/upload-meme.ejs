@@ -1,18 +1,13 @@
     <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Bootstrap Upload Control Template | PrepBootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" type="text/css" href="./bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="./font-awesome.min.css" />
+    <title>Upload a Meme!</title>
+<link rel="icon" href="./icon.png">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap.min.css" /> <!--for style-->
+    <link rel="stylesheet" type="text/css" href="./stylesheets/font-awesome.min.css" /> <!--for style-->
     <style>
         h1{
             text-align: center;
-        }
-        #share{
-            height:30px;
         }
     </style>
 </head>
@@ -28,22 +23,24 @@
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post">
+              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload'>
             <input type="file" id="image" name="image"/>
             <br>
             <p>Enter meme Title</p>
             <input type = 'text' name = 'memeTitle'>
             <p>Select your tags!</p>
             <div>
-            <label class="checkbox-inline"><input type="checkbox" value="Funny" name = 'memeTag'>Funny </label>
-            <label class="checkbox-inline"><input type="checkbox" value="Sad" name = 'memeTag'>Sad </label>
-            <label class="checkbox-inline"><input type="checkbox" value="Relationships" name = 'memeTag'>Relationships </label> 
+<!--
+            <label class="checkbox-inline"><input type="checkbox" value="Funny" name = 'memeTag1'>Funny </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Sad" name = 'memeTag2'>Sad </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Relationships" name = 'memeTag3'>Relationships </label> 
             </div>
             <div>
-            <label class="checkbox-inline"><input type="checkbox" value="Social" name = 'memeTag'>Social </label>
-            <label class="checkbox-inline"><input type="checkbox" value="Disgusting" name = 'memeTag'>Disgusting </label>
-            <label class="checkbox-inline"><input type="checkbox" value="Racists" name = 'memeTag'>Racists </label> 
-            <input type = 'text' name = 'memeTag'>
+            <label class="checkbox-inline"><input type="checkbox" value="Social" name = 'memeTag4'>Social </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Disgusting" name = 'memeTag5'>Disgusting </label>
+            <label class="checkbox-inline"><input type="checkbox" value="Racists" name = 'memeTag6'>Racists </label> 
+-->
+                <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Type your memes here separated by commas(,)'></textarea>
             </div>
             <div class="form-group">
               <label for="share">Share to users:</label>
