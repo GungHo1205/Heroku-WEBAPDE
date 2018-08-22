@@ -1,30 +1,39 @@
 const mongoose = require('./connectionModel').connection;
 
-const memeSchema = mongoose.Schema({
- //       memeID: String,
+var memeSchema = mongoose.Schema({
+    _postID: mongoose.SchemaTypes.ObjectId,
         memeTitle: String,
         memeTag: String,
-//    [{ // array of tags
-//                tag:String   
-//        }],
-        image: String,
+        memeImage: String,
         memeOwner: String,
- //       memeDate: String,
- //       commentNumber: Number,
-        memePrivacy: String
+        memePrivacy: String,
 }); // meme schema
 
 
-const memeModel = mongoose.model('meme', memeSchema); // model used for database of memes
+var memeModel = mongoose.model('meme', memeSchema); // model used for database of memes
 
 
-function addMeme(memeTitle,memeTag,image, memeOwner, memePrivacy, callback){
-  const instance = memeModel({ memeTitle: memeTitle, memeTag: memeTag,image: image, memeOwner: memeOwner, memePrivacy: memePrivacy });
-  
+function addMeme(memeTitle,memeTag,memeImage, memeOwner, memePrivacy, callback){
+  var instance = memeModel({ memeTitle: memeTitle, memeTag: memeTag,memeImage: image, memeOwner: memeOwner, memePrivacy: memePrivacy });
   instance.save(function (err) {
     if(err) return console.error(err);
     callback();
   });
 }
 
+function pushMeme(meme){
+    var m = new memeModel(meme);
+    m.save();
+}
+
+function viewMeme(callback){
+  memeModel.find({}, function (err, list) {
+    if(err) return console.error(err);
+    callback(list);
+  });
+}
+
+
+module.exports.pushMeme = pushMeme;
 module.exports.addMeme = addMeme;
+module.exports.viewMeme = viewMeme;

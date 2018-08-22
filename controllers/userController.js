@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel');
+const memeModel = require('../models/memeModel')
 const formidable = require('formidable');
 const crypto = require("crypto");
 const session = require('express-session');
@@ -17,7 +18,7 @@ server.get('/about', function(req,resp){
       resp.render('./pages/about',{username:req.session.username});
   });
 server.get('/index', function(req,resp){
-      resp.render('./pages/index',{username:req.session.username});
+      resp.redirect('/');
   });  
 server.get('/meme1', function(req,resp){
       resp.render('./pages/meme1',{username:req.session.username});
@@ -37,7 +38,13 @@ server.get('/signed-up', function(req,resp){
   });
 
   server.get('/', function(req,resp){
-      resp.render('./pages/index',{username:req.session.username});
+      memeModel.viewMeme(function(list){
+      const data = { list:list};
+      var findUser = userModel.findOne(req.session.username);
+       findUser.then((foundUser)=>
+                     console.log(foundUser));
+      resp.render('./pages/index',{data:data, username:req.session.username});
+    });
   });
 
   server.get('/log-in', function(req,resp){
@@ -78,7 +85,7 @@ server.get('/user-profile', function(req,resp){
                if(foundUser.password === hashedpassword)
                    {
                        req.session.username = fields.username;
-                        resp.render('./pages/index',{username:req.session.username});
+                        resp.redirect('/');
                    }
             }
         

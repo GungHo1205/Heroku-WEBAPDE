@@ -110,87 +110,26 @@
       <div id = 'most-liked'><a href="#"><strong>View Most Liked</strong></a></div>
       <div id = 'trending'><a href="#"><strong>View Trending</strong></a></div>
     </div>
-    <div class="col-sm-8 text-left">
-      <% if(username){ %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/meme1'><img src="./meme1.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/meme1'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <% } else { %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/inaccessible-meme'><img src="./meme1.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/inaccessible-meme'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <%    } %>
-      <hr>
-      <% if(username){ %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/meme1'><img src="./meme2.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/meme1'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <% } else { %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/inaccessible-meme'><img src="./meme2.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/inaccessible-meme'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <%    } %>
-      <hr>
-      <% if(username){ %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/meme1'><img src="./meme3.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/meme1'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <% } else { %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/inaccessible-meme'><img src="./meme3.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/inaccessible-meme'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <%    } %>
-      <hr>
-      <% if(username){ %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/meme1'><img src="./meme4.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/meme1'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <% } else { %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/inaccessible-meme'><img src="./meme4.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/inaccessible-meme'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <%    } %>
-      <hr>
-      <% if(username){ %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/meme1'><img src="./meme5.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/meme1'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <% } else { %>
-                  <div id="memeblockstyle">
-                  <h1>Zucked</h1>
-                  <center><p><a href='/inaccessible-meme'><img src="./meme5.jpg" id="meme"></a></p></center>
-                  <h3>Posted by <a href='/inaccessible-meme'>Joshy</a></h3>
-                  <p>funny</p>
-                  </div>
-        <%    } %>
-      <hr>
+    <div class="col-sm-8 text-left">        
+      <% for(var i=0;i<data.list.length;i++){ %>
+          <% if(username){ %>
+                      <div id="memeblockstyle">
+                      <h1><%= data.list[i].memeTitle %></h1>
+                      <center><p><a href='/meme1'><img src="/new/<%= data.list[i].memeImage %>" id="meme"></a></p></center>
+                      <h3>Posted by <a href='/meme1'><%= data.list[i].memeOwner %></a></h3>
+                      <p><%= data.list[i].tags %></p>
+                      </div>
+                      <hr>
+            <% } else { %>
+                      <div id="memeblockstyle">
+                      <h1><%= data.list[i].memeTitle %></h1>
+                      <center><p><a href='/inaccessible-meme'><img src="/new/<%= data.list[i].memeImage %>" id="meme"></a></p></center>
+                      <h3>Posted by <a href='/inaccessible-meme'><%= data.list[i].memeOwner %></a></h3>
+                      <p><%= data.list[i].tags %></p>
+                      </div>
+                      <hr>
+            <%    } %>
+      <% } %>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
