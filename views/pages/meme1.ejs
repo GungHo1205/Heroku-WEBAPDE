@@ -3,34 +3,32 @@
     <title>Meme</title>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <script>
-              
-              
-            var commentClass = function(comment,user){
-                this.comment = comment;
-                this.user = user;
-            }
-
-            var list = [
-                new commentClass("henlo","salcy"),
-                new commentClass("hi","joshy"),
-                new commentClass("tite","testy"),
-            ];
-            function addComment(){
-                const comment = text(document.forms['enterComment'][''].value);
-                console.log(comment);
-                var allContent = '<div class="quarter">'+
-                    '<div>Comment</div>'+
-                    '<div>User</div>'+
-                for(var i=0;i<list.length;i++){
-                        const divContent = '<div class="quarter">'+
-                            '<div>'+list[i].comment+'</div>'+
-                            '<div>'+list[i].user+'</div>';
-                        allContent += divContent;
-                }//for
-                
-	           document.getElementById('comment-list').innerHTML = allContent;
-            }
-    
+//            var commentClass = function(comment,user){
+//                this.comment = comment;
+//                this.user = user;
+//            }
+//
+//            var list = [
+//                new commentClass("henlo","salcy"),
+//                new commentClass("hi","joshy"),
+//                new commentClass("tite","testy"),
+//            ];
+//            function addComment(){
+//                const comment = text(document.forms['enterComment'][''].value);
+//                console.log(comment);
+//                var allContent = '<div class="quarter">'+
+//                    '<div>Comment</div>'+
+//                    '<div>User</div>'+
+//                for(var i=0;i<list.length;i++){
+//                        const divContent = '<div class="quarter">'+
+//                            '<div>'+list[i].comment+'</div>'+
+//                            '<div>'+list[i].user+'</div>';
+//                        allContent += divContent;
+//                }//for
+//                
+//	           document.getElementById('comment-list').innerHTML = allContent;
+//            }
+//    
         </script>
 
         <style>
@@ -168,11 +166,11 @@
       <div id = 'trending'><p><a href="#"><strong>View Trending</strong></a></p></div>
     </div>
     <div class="col-sm-8 text-left">
-    <center><a href="javascript:history.back()"><img src="./meme1.jpg" height="300px" width="300px" id="full"></a></center>
+<!--        <center><img src="<%=memeImage%>" height="300px" width="300px"></center>-->
     <p>Posted by: <a href = '/user-profile'><%=username%></a></p>
       <p>Post is :<label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='public' checked disabled>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='private'id = 'private' disabled>Private </label></p>
         <p>Edit meme tags:</p>
-            <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Type your memes here separated by commas(,)' disabled = 'true'></textarea>
+            <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Current tags are : <%=memeTag%>' disabled = 'true'></textarea>
             <!-- <form method="post" enctype="multipart/form-data"> -->
             <!-- <div> -->
                 <!--Put shared users here-->
@@ -185,8 +183,6 @@
                 <form method = 'get' action = '/delete'>
                     <input type = 'submit' value = 'Delete Post'>
                 </form>
-            </span>
-        </form>
         <div id="comments">
             Comments:
             <div id="comment-list">

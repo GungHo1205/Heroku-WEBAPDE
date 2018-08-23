@@ -15,6 +15,45 @@ function memeModule(server){
       resp.render('./pages/search',{username:req.session.username});
   });
     
+    server.get('/:id', function(req,resp){
+         var findMeme = memeModel.findMeme(req.params.id)
+         console.log('this is find meme ' + req.params.id);
+      findMeme.then((foundMeme)=>
+        {
+            if(foundMeme)
+            {
+              resp.render('./pages/meme1',{
+                  username:req.session.username,
+                  memeTitle: foundMeme.memeTitle,
+                  memeTag: foundMeme.memeTag ,
+                  memeImage: foundMeme.memeImage,
+                  memeOwner: foundMeme.memeOwner,
+                  memePrivacy: foundMeme.memePrivacy
+              })   
+            }
+      })
+    })
+                    
+        
+//      else
+//                    {
+//                        resp.redirect('./inaccessible-meme');
+//                    }
+//      })
+//        memeModel.findMeme(req.params.id).then((foundMeme)=>{
+//                  resp.render('./pages/meme1',{
+//                  username:req.session.username,
+//                  memeTitle: foundMeme.memeTitle,
+//                  memeTag: foundMeme.memeTag ,
+//                  memeImage: foundMeme.memeImage,
+//                  memeOwner: foundMeme.memeOwner,
+//                  memePrivacy: foundMeme.memePrivacy
+//              })
+//        },(error)=>{
+//            
+//        })
+//    
+    
   server.post('/searched', function(req,resp){
       var form = new formidable.IncomingForm();
       form.parse(req, function(err, fields){

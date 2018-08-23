@@ -1,7 +1,6 @@
 const mongoose = require('./connectionModel').connection;
 
 var memeSchema = mongoose.Schema({
-    _postID: mongoose.SchemaTypes.ObjectId,
         memeTitle: String,
         memeTag: String ,
         memeImage: String,
@@ -55,15 +54,22 @@ function editMeme(search, memeTitle, memeTag, memeImage, memePrivacy){
                     memeImage:memeImage, 
                     memePrivacy:memePrivacy
                   })
-
+}
 function deleteMeme(search){
   memeModel.remove({
                     search:search
                   })
 }
-}// first input is search
+    
+function findMeme(id){
+    console.log('this is id' + id);
+    return memeModel.findOne({_id:id});
+}
+// first input is search]
+
 module.exports.searchOwner = searchOwner;
 module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
 module.exports.addMeme = addMeme;
 module.exports.viewMeme = viewMeme;
+module.exports.findMeme = findMeme;

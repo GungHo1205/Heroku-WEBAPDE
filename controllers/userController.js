@@ -20,9 +20,6 @@ server.get('/about', function(req,resp){
 server.get('/index', function(req,resp){
       resp.redirect('/');
   });  
-server.get('/meme1', function(req,resp){
-      resp.render('./pages/meme1',{username:req.session.username});
-  });
 server.get('/logout', function(req,resp){
       req.session.destroy();
       resp.render('./pages/logout');
