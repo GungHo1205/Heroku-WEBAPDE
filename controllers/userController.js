@@ -38,8 +38,8 @@ server.get('/signed-up', function(req,resp){
       memeModel.viewMeme(function(list){
       const data = { list:list};
       var findUser = userModel.findOne(req.session.username);
-       findUser.then((foundUser)=>
-                     console.log(foundUser));
+      //  findUser.then((foundUser)=>
+      //                console.log(foundUser));
       resp.render('./pages/index',{data:data, username:req.session.username});
     });
   });
@@ -49,6 +49,10 @@ server.get('/signed-up', function(req,resp){
   });
 
 server.get('/user-profile', function(req,resp){
+  memeModel.searchOwner(req.session.username, function(list){
+    console.log(req.session.username);
+    const data = { list:list};
+    console.log(data);
       var findUser = userModel.findOne(req.session.username)
       findUser.then((foundUser)=>
         {
@@ -56,7 +60,8 @@ server.get('/user-profile', function(req,resp){
             {
                         resp.render('./pages/user-profile',{username:req.session.username,
                          image:foundUser.image,
-                         shortBio:foundUser.shortBio
+                         shortBio:foundUser.shortBio,
+                         data:data
                         });
                    
             }
@@ -67,6 +72,7 @@ server.get('/user-profile', function(req,resp){
                     }
       })
   });
+});
 
   server.post('/log-in=successful', function(req,resp){
       var form = new formidable.IncomingForm()
@@ -84,7 +90,6 @@ server.get('/user-profile', function(req,resp){
 						req.session.cookie.expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7 * 3)
 						req.session.maxAge = 1000 * 60 * 60 * 24 * 7 * 3
 					}
-                console.log(fields.rememberMe);
                         req.session.rememberMe = fields.rememberMe
                         req.session.username = fields.username;
                         resp.redirect('/');
@@ -110,7 +115,6 @@ server.get('/user-profile', function(req,resp){
           resp.redirect('/');
         });//addUser
       });//rename
-        console.log(newpath);
     });//parse
       
   });//post

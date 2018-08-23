@@ -38,7 +38,6 @@ function pushMeme(meme, username){
     console.log(userModel.meme);
 }
 
-
 module.exports.findOne = findOne;   
 module.exports.pushMeme = pushMeme;   
 module.exports.addUser = addUser;

@@ -35,11 +35,20 @@ function viewMeme(callback){
 
 function searchMeme(search, callback){
   memeModel.find({memeTag: {$regex: search, $options: 'i'}}, function (err, list) {
+    console.log(search);
     if(err) return console.error(err);
     callback(list);
   });
 }
 
+function searchOwner(search, callback){
+  memeModel.find({memeOwner: {$regex: search, $options: 'i'}}, function (err, list) {
+    console.log(search);
+    if(err) return console.error(err);
+    callback(list);
+  });
+}
+module.exports.searchOwner = searchOwner;
 module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
 module.exports.addMeme = addMeme;

@@ -130,7 +130,24 @@
         <div class="container-fluid bg-3 text-center">    
   <h3>Recent memes:</h3><br>
   <div class="row">
-    <div class="col-sm-3">
+      <% for(var i=0;i<data.list.length;i++){ %>
+          <% if(username){ %>
+                      <div id="memeblockstyle">
+                      <h1><%= data.list[i].memeTitle %></h1>
+                      <p><a href='/meme1'><img src="/new/<%= data.list[i].memeImage %>" id="meme"></a></p>
+                      </div>
+                      <hr>
+            <% } else { %>
+                      <div id="memeblockstyle">
+                      <h1><%= data.list[i].memeTitle %></h1>
+                      <p><a href='/inaccessible-meme'><img src="/new/<%= data.list[i].memeImage %>" id="meme"></a></p>
+                      </div>
+                      <hr>
+            <%    } %>
+      <% } %>
+                    </div>
+                  </div>
+    <!-- <div class="col-sm-3">
         <a href='./meme1.html'><img src="./meme1.jpg" class="img-responsive"></a>
     </div>
     <div class="col-sm-3"> 
@@ -190,11 +207,7 @@
             <a href='./meme14.html'><img src="./meme14.jpg" class="img-responsive"></a>
         </div>
         <div class="col-sm-3"> 
-          <a href='./meme15.html'><img src="./meme15.jpg" class="img-responsive"></a>
-        </div>
-      </div>
-</div><br>
-</div>
+          <a href='./meme15.html'><img src="./meme15.jpg" class="img-responsive"></a> -->
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
