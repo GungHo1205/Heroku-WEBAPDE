@@ -48,6 +48,20 @@ function searchOwner(search, callback){
     callback(list);
   });
 }
+
+function editMeme(search, memeTitle, memeTag, memeImage, memePrivacy){
+  memeModel.update({memeTitle:memeTitle, 
+                    memeTag: memeTag, 
+                    memeImage:memeImage, 
+                    memePrivacy:memePrivacy
+                  })
+
+function deleteMeme(search){
+  memeModel.remove({
+                    search:search
+                  })
+}
+}// first input is search
 module.exports.searchOwner = searchOwner;
 module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
