@@ -1,56 +1,8 @@
 <html>
 <head>
     <title>Meme</title>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-          <script>
-            function edit() {
-                var private_checked = document.getElementById("private").checked
-                var public_checked = document.getElementById("private").checked
-            document.getElementById("Funny").disabled= false;
-            document.getElementById("Sad").disabled= false;
-            document.getElementById("Relationships").disabled= false;
-            document.getElementById("Social").disabled= false;
-            document.getElementById("Disgusting").disabled= false;
-            document.getElementById("Racists").disabled= false;
-                return false;
-            }
-            function save() {
-            document.getElementById("Funny").disabled= true;
-            document.getElementById("Sad").disabled= true;
-            document.getElementById("Relationships").disabled= true;
-            document.getElementById("Social").disabled= true;
-            document.getElementById("Disgusting").disabled= true;
-            document.getElementById("Racists").disabled= true;
-                return false;
-            }
-            function disable() {
-            document.getElementById("Salcy").disabled= true;
-            document.getElementById("Manzy").disabled= true;
-            document.getElementById("Ato").disabled= true;
-                return false;
-            }
-            function enable() {
-            document.getElementById("Salcy").disabled= false;
-            document.getElementById("Manzy").disabled= false;
-            document.getElementById("Ato").disabled= false;
-            
-                return false;
-            }
-            function meddle(){
-            document.getElementById("private").disabled= false;
-            document.getElementById("public").disabled= false;
-              return false;
-            }
-            function meddled(){
-            document.getElementById("private").disabled= true;
-            document.getElementById("public").disabled= true;
-                return false;
-            }
+            <script>
               
               
             var commentClass = function(comment,user){
@@ -220,38 +172,20 @@
     <p>Posted by: <a href = '/user-profile'><%=username%></a></p>
       <p>Post is :<label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='public' checked disabled>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='private'id = 'private' disabled>Private </label></p>
         <p>Edit meme tags:</p>
-        <form method="post" enctype="multipart/form-data">
-            <div>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Funny' id = 'Funny' checked disabled>Funny </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Sad' id = 'Sad'  disabled>Sad </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Relationships' id = 'Relationships'  disabled>Relationships </label> 
-            </div>
-            <div>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Social' id = 'Social' disabled>Social </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" id = 'Disgusting' name = 'Disgusting' disabled>Disgusting </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = "Racists" id ="Racists"  disabled>Racists </label>
-            </div>
-            <span style = "display:inline;">
-                <button type = 'button' onclick = 'edit();'>Edit tags</button>
-                <button type = 'button' onclick = 'save();'>Save tags</button>
+            <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Type your memes here separated by commas(,)' disabled = 'true'></textarea>
+            <!-- <form method="post" enctype="multipart/form-data"> -->
+            <!-- <div> -->
+                <!--Put shared users here-->
+            <!-- </div> -->
+                <!-- <br> -->
+            <!-- <span style = "display:inline;"> -->
+                <form method = 'get' action = '/edit'>
+                    <input type = 'submit' value = 'Edit Post'>
+                </form>
+                <form method = 'get' action = '/delete'>
+                    <input type = 'submit' value = 'Delete Post'>
+                </form>
             </span>
-        </form>
-            <form method="post" enctype="multipart/form-data">
-            <div>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Salcy' id = 'Salcy'  disabled>Salcy </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Manzy' id = 'Manzy'  disabled>Manzy </label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name = 'Ato' id = 'Ato'  disabled>Ato </label> 
-            </div>
-            <span style = "display:inline;">
-                <button type = 'button' onclick = 'enable();'>Edit shared users</button>
-                <button type = 'button' onclick = 'disable();'>Save shared users</button>
-            </span>
-                <br>
-            <span style = "display:inline;">
-                <button type = 'button' onclick = 'enable(); edit(); meddle();'>Edit Post</button>
-                <button type = 'button' onclick = 'disable(); save(); meddled();'>Save all</button>
-            </span>
-            <button type = 'button'>Delete Post</button>
         </form>
         <div id="comments">
             Comments:
