@@ -16,6 +16,9 @@ function memeModule(server){
   });
     
     server.get('/memeCall/:id', function(req,resp){
+              var findUser = userModel.findOne(req.session.username);
+       findUser.then((foundUser)=>{
+           if(foundUser){
          var findMeme = memeModel.findMeme(req.params.id)
          console.log('this is find meme ' + req.params.id);
       findMeme.then((foundMeme)=>
@@ -30,31 +33,21 @@ function memeModule(server){
                   memeImage: foundMeme.memeImage,
                   memeOwner: foundMeme.memeOwner,
                   memePrivacy: foundMeme.memePrivacy
-              })
-          }
+                                          })
+                      }
                 else
                     {
                         resp.redirect('./inaccessible-meme');
                     }
-      })
+        })
+                    }
+                           else
+                    {
+                        resp.render('./pages/inaccessible-meme');
+                    }
+                              });
         });
                     
-        
-
-//        memeModel.findMeme(req.params.id).then((foundMeme)=>{
-//                  resp.render('./pages/meme1',{
-//                  username:req.session.username,
-//                  memeTitle: foundMeme.memeTitle,
-//                  memeTag: foundMeme.memeTag ,
-//                  memeImage: foundMeme.memeImage,
-//                  memeOwner: foundMeme.memeOwner,
-//                  memePrivacy: foundMeme.memePrivacy
-//              })
-//        },(error)=>{
-//            
-//        })
-//    
-    
   server.post('/searched', function(req,resp){
       var form = new formidable.IncomingForm();
       form.parse(req, function(err, fields){
@@ -77,13 +70,21 @@ server.get('/upload-meme', function(req,resp){
         }
   }) ;
     
-server.get('/upload-meme', function(req,resp){
-    if(req.session.username)
-      resp.render('./pages/upload-meme');
-    else
-        {
-        resp.redirect('./log-in')
-        }
+server.post('/edit', function(req,resp){
+          var form = new formidable.IncomingForm();
+          form.parse(req, function (err, fields, files) {
+              console.log(req.body.id);
+              console.log(fields.id);
+                            console.log(req.body.memeID);
+              console.log(fields.memeID);
+            var oldpath = files.image.path;
+            var newpath = 'public\\new\\' + files.image.name;
+            fs.rename(oldpath, newpath, function (err) {
+                memeModel.editMeme(req.query.memeID, fields.memeTitle, fields.memeTag, files.image.name, fields.memePrivacy);
+                            console.log(req.query.memeID);
+                            resp.redirect('/memeCall/' + req.query.id);
+                    });
+          });
   }) ;
 
 server.post('/uploaded-meme', function(req,resp){

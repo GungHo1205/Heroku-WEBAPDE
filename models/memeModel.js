@@ -48,12 +48,12 @@ function searchOwner(search, callback){
   });
 }
 
-function editMeme(search, memeTitle, memeTag, memeImage, memePrivacy){
-  memeModel.update({memeTitle:memeTitle, 
-                    memeTag: memeTag, 
-                    memeImage:memeImage, 
-                    memePrivacy:memePrivacy
-                  })
+function editMeme(id, memeTitle, memeTag, memeImage, memePrivacy){
+  memeModel.findOneAndUpdate({
+                    _id: id
+                    },{
+                    memeTitle, memeTag, memeImage, memePrivacy
+                  }).then();
 }
 function deleteMeme(search){
   memeModel.remove({
@@ -66,7 +66,7 @@ function findMeme(id){
     return memeModel.findOne({_id:id});
 }
 // first input is search]
-
+module.exports.editMeme = editMeme;
 module.exports.searchOwner = searchOwner;
 module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
