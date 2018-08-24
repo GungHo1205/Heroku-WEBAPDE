@@ -27,7 +27,7 @@ function memeModule(server){
             console.log('tae');
               resp.render('./pages/meme1',{
                   username:req.session.username,
-                  _id: req.params.id,
+                  memeID: req.params.id,
                   memeTitle: foundMeme.memeTitle,
                   memeTag: foundMeme.memeTag ,
                   memeImage: foundMeme.memeImage,
@@ -73,16 +73,14 @@ server.get('/upload-meme', function(req,resp){
 server.post('/edit', function(req,resp){
           var form = new formidable.IncomingForm();
           form.parse(req, function (err, fields, files) {
-              console.log(req.body.id);
-              console.log(fields.id);
-                            console.log(req.body.memeID);
+//                            console.log(req.body.memeID);
               console.log(fields.memeID);
             var oldpath = files.image.path;
             var newpath = 'public\\new\\' + files.image.name;
             fs.rename(oldpath, newpath, function (err) {
-                memeModel.editMeme(req.query.memeID, fields.memeTitle, fields.memeTag, files.image.name, fields.memePrivacy);
-                            console.log(req.query.memeID);
-                            resp.redirect('/memeCall/' + req.query.id);
+                memeModel.editMeme(fields.memeID, fields.memeTitle, fields.memeTag, files.image.name, fields.memePrivacy);
+                            console.log(fields.memeID);
+                            resp.redirect('/memeCall/' + fields.memeID);
                     });
           });
   }) ;
