@@ -16,10 +16,7 @@ server.use(session({
 }));
 server.get('/about', function(req,resp){
       resp.render('./pages/about',{username:req.session.username});
-  });
-server.get('/index', function(req,resp){
-      resp.redirect('/');
-  });  
+  });   
 server.get('/logout', function(req,resp){
       req.session.destroy();
       resp.render('./pages/logout');
@@ -27,8 +24,8 @@ server.get('/logout', function(req,resp){
 server.get('/sign-up', function(req,resp){
       resp.render('./pages/sign-up');
   });
-server.get('/signed-up', function(req,resp){
-      resp.render('./pages/signed-up');
+server.get('/index', function(req,resp){
+      resp.redirect('/');
   });
 
   server.get('/', function(req,resp){
@@ -45,17 +42,18 @@ server.get('/signed-up', function(req,resp){
       resp.render('./pages/log-in');
   });
 
-server.get('/user-profile', function(req,resp){
-  memeModel.searchOwner(req.session.username, function(list){
-    console.log(req.session.username);
+server.get('/user-profile/:username', function(req,resp){
+  memeModel.searchOwner(req.params.username, function(list){
+    console.log(req.params.username);
     const data = { list:list};
     console.log(data);
-      var findUser = userModel.findOne(req.session.username)
+      var findUser = userModel.findOne(req.params.username)
       findUser.then((foundUser)=>
         {
             if(foundUser)
             {
                         resp.render('./pages/user-profile',{username:req.session.username,
+                         userProfile:foundUser.username,
                          image:foundUser.image,
                          shortBio:foundUser.shortBio,
                          data:data

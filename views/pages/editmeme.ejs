@@ -1,0 +1,228 @@
+<base href="/">
+<html>
+<head>
+    <title>Meme</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script>
+//            var commentClass = function(comment,user){
+//                this.comment = comment;
+//                this.user = user;
+//            }
+//
+//            var list = [
+//                new commentClass("henlo","salcy"),
+//                new commentClass("hi","joshy"),
+//                new commentClass("tite","testy"),
+//            ];
+//            function addComment(){
+//                const comment = text(document.forms['enterComment'][''].value);
+//                console.log(comment);
+//                var allContent = '<div class="quarter">'+
+//                    '<div>Comment</div>'+
+//                    '<div>User</div>'+
+//                for(var i=0;i<list.length;i++){
+//                        const divContent = '<div class="quarter">'+
+//                            '<div>'+list[i].comment+'</div>'+
+//                            '<div>'+list[i].user+'</div>';
+//                        allContent += divContent;
+//                }//for
+//                
+//	           document.getElementById('comment-list').innerHTML = allContent;
+//            }
+//    
+        </script>
+
+        <style>
+                #profilepic{
+                    border-radius: 50%;
+                    height: 35px;
+                    width: 35px;
+                    margin-top: 5px;
+                  }
+                  #logo{
+                    height:45px;
+                    width:45px;
+                  }
+                /* Remove the navbar's default margin-bottom and rounded borders */ 
+                .navbar {
+                  margin-bottom: 0;
+                  border-radius: 0;
+                }
+                  body {
+                  padding-top: 50px;
+                }
+
+                /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+                .row.content {height: 800px}
+
+                /* Set gray background color and 100% height */
+                .sidenav {
+                  padding-top: 20px;
+                  background-color: lightgray;
+                  height: 100%;
+                }
+
+                /* Set black background color, white text and some padding */
+                footer {
+                  background-color: #555;
+                  color: white;
+                  padding: 15px;
+                }
+                  #most-recent{
+                      font-size: 22px;
+                      margin-left: 0;
+                      text-align: left;
+                  }
+                  #most-liked{
+                      font-size: 22px;
+                      margin-left: 0;
+                      text-align: left;
+                  }
+                  #trending{
+                      font-size: 22px;
+                      margin-left: 0;
+                      text-align: left;
+                  }
+                  .well{
+                  font-size: 22px;
+                  border-width: 5px;  
+                  }
+            center img{
+                padding: 10px;
+            }
+
+
+                /* On small screens, set height to 'auto' for sidenav and grid */
+                @media screen and (max-width: 767px) {
+                  .sidenav {
+                    height: auto;
+                    padding: 15px;
+                  }
+                  .row.content {height:auto;} 
+                }
+                  #meme{
+                      height: 350px;
+                      width: auto;
+                  }
+                  #memeblockstyle{
+                    border: 1px solid gray;
+                    padding: 5px 20px;
+                    background-color: whitesmoke;
+                  }
+                  #memeblockstyle h1{
+                    margin-left: 5px;
+                  }
+                  #memeblockstyle center{
+                    border-radius: 25px;
+                    margin-left: 5px;
+                    border: 1px solid lightgray;
+                  }
+                  #memeblockstyle p{
+                    margin-left: 5px;
+                  }
+            full{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+            overflow: auto;
+            }
+            input[type=checkbox] {
+                height:17px;
+                width: 17px;    
+           /* For mobile, it's typically better to position checkbox on top of clickable
+              area and turn opacity to 0 instead. */
+        }
+            .container-fluid text-cente label{
+                font-size: 45px;
+            }
+            #comments{
+                padding: 20px;
+                background-color: whitesmoke;
+                border: 1px solid gray;
+            }
+            #user{
+                font-size: 10px;
+            }
+            #commentcontent{
+                font-size: 20px;               
+            }
+        </style>
+</head>
+<body>
+    <% if(username){ %>
+        <%- include loggedNavBar.ejs%>
+    <% } else { %>
+        <%- include unloggedNavBar.ejs%>
+    <%    } %>
+    <div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <div id = 'most-recent'><p><a href="#"><strong>View Most Recent</strong></a></p></div>
+      <div id = 'most-liked'><p><a href="#"><strong>View Most Liked</strong></a></p></div>
+      <div id = 'trending'><p><a href="#"><strong>View Trending</strong></a></p></div>
+    </div>
+    <div class="col-sm-8 text-left">
+        <center><img src="/new/<%=memeImage%>" height="300px" width="450px"></center>
+    <p>Posted by: <a href = '/user-profile'><%=username%></a></p>
+      <p>Post is :<label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='public'>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='private'id = 'private'>Private </label></p>
+        <p>Edit meme tags:</p>
+            <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Current tags are : <%=memeTag%>'></textarea>
+            <!-- <form method="post" enctype="multipart/form-data"> -->
+            <!-- <div> -->
+                <!--Put shared users here-->
+            <!-- </div> -->
+                <!-- <br> -->
+            <!-- <span style = "display:inline;"> -->
+                <form method = 'get' action = '/edit/<%=_id%>'>
+                    <input type = 'submit' value = 'Save Edits'>
+                </form>
+                <form method = 'get' action = '/delete'>
+                    <input type = 'submit' value = 'Delete Post'>
+                </form>
+        <div id="comments">
+            Comments:
+            <div id="comment-list">
+                <hr>
+                <div class="quarter">
+                    <div>comment</div>
+                    <div>user</div>
+                </div>
+                <hr>
+            </div>
+            
+            <form onsubmit="addComment()" name="enterComment" method="get">
+                <textarea name="comments" id="comments">
+                </textarea>
+                <input type="submit" value="Comment">
+            </form>
+        </div>
+        </div>
+        <div class="col-sm-2 sidenav">
+          <div class="well">
+            <p>Titan gel.jpg</p>
+          </div>
+          <div class="well">
+            <p>MnF.gif</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>lazada.jpg</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>olx.gif</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>shopee.jpg</p>
+          </div>
+          <div class="well">
+            <p id = 'ad 2'>robust.gif</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

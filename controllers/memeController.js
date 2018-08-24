@@ -15,31 +15,32 @@ function memeModule(server){
       resp.render('./pages/search',{username:req.session.username});
   });
     
-    server.get('/:id', function(req,resp){
+    server.get('/memeCall/:id', function(req,resp){
          var findMeme = memeModel.findMeme(req.params.id)
          console.log('this is find meme ' + req.params.id);
       findMeme.then((foundMeme)=>
         {
-            if(foundMeme)
-            {
+          if(foundMeme){
+            console.log('tae');
               resp.render('./pages/meme1',{
                   username:req.session.username,
+                  _id: req.params.id,
                   memeTitle: foundMeme.memeTitle,
                   memeTag: foundMeme.memeTag ,
                   memeImage: foundMeme.memeImage,
                   memeOwner: foundMeme.memeOwner,
                   memePrivacy: foundMeme.memePrivacy
-              })   
-            }
+              })
+          }
+                else
+                    {
+                        resp.redirect('./inaccessible-meme');
+                    }
       })
-    })
+        });
                     
         
-//      else
-//                    {
-//                        resp.redirect('./inaccessible-meme');
-//                    }
-//      })
+
 //        memeModel.findMeme(req.params.id).then((foundMeme)=>{
 //                  resp.render('./pages/meme1',{
 //                  username:req.session.username,
@@ -67,6 +68,15 @@ function memeModule(server){
         });
     });
   });
+server.get('/upload-meme', function(req,resp){
+    if(req.session.username)
+      resp.render('./pages/upload-meme');
+    else
+        {
+        resp.redirect('./log-in')
+        }
+  }) ;
+    
 server.get('/upload-meme', function(req,resp){
     if(req.session.username)
       resp.render('./pages/upload-meme');

@@ -113,10 +113,10 @@
                       <div id="memeblockstyle">
                       <h1><%= data.list[i].memeTitle %></h1>
                       <center><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></center>    
-                      <h3>Posted by <a href='/meme1'><%= data.list[i].memeOwner %></a></h3>
+                      <h3>Posted by <a href='/user-profile/<%=data.list[i].memeOwner%>'><%= data.list[i].memeOwner %></a></h3>
                       <p><%= data.list[i].tags %></p>
-                      <form action = '/<%=data.list[i]._id%>' >
-                          <input type = 'submit' value = 'View Meme'>;
+                      <form action = '/memeCall/<%=data.list[i]._id%>' >
+                          <input type = 'submit' value = 'View Meme'>
                       </form>
                       </div>
                       <hr>

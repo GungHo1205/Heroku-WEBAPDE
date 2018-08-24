@@ -4,6 +4,7 @@
         <link rel="icon" href="./icon.png">
     <title>Ememerald</title>
     <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- style from bootstrap used-->
     <script type="text/javascript">// <![CDATA[
     function ShowHide(divId)
     {
@@ -112,7 +113,7 @@
         <input type="file" id="files" name="files" multiple="multiple"/>
         <button onclick = "location.href = './user-profile.html'"><strong>Upload new profile picture</strong></button>
       <h1>Username:</h1>
-      <h3><%=username%></h3>
+      <h3><%=userProfile%></h3>
       <hr>
       <h1>Gender:</h1>
       <h3>Male</h3>
@@ -134,7 +135,7 @@
           <% if(username){ %>
                       <div id="memeblockstyle">
                       <h1><%= data.list[i].memeTitle %></h1>
-                      <p><a href='/meme1'><img src="/new/<%= data.list[i].memeImage %>" id="meme"></a></p>
+                      <p><a href='/memeCall/<%=data.list[i]._id%>'><img src="/new/<%= data.list[i].memeImage %>" height='300px' width='450px'></a></p>
                       </div>
                       <hr>
             <% } else { %>
