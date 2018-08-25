@@ -29,9 +29,9 @@ function findOne(username){
     
 }
 
-function pushMeme(meme, username){
+function pushMeme(meme){
     userModel.findOneAndUpdate({
-                username:username},{
+                username:meme.memeOwner},{
                 $push: {meme: meme}
     }).then();
 }
@@ -45,7 +45,35 @@ function deleteMeme(search, callback){
     ).then();
 }
 
+function editMeme(username, id, memeTitle, memeTag, memeImage, memePrivacy){
+    userModel.findOne({
+        username:username
+    }).then((foundUser) => {
+        if(foundUser){
+            for(let i = 0; i < foundUser.meme.length;i++){
+                if(foundUser.meme[i]._id == id){
+                    console.log('wow')
+                    console.log(memeTitle);
+                    console.log(memeTag);
+                    console.log(memeImage);
+                    console.log(memePrivacy);
+                    foundUser.meme[i].memeTitle = memeTitle;
+                    foundUser.meme[i].memeTag = memeTag;
+                    foundUser.meme[i].memeImage = memeImage;
+                    foundUser.meme[i].memePrivacy = memePrivacy;
+                    console.log(foundUser.meme[i].memeTitle);
+                    console.log(foundUser.meme[i].memeTag);
+                    console.log(foundUser.meme[i].memeImage);
+                    console.log(foundUser.meme[i].memePrivacy);
+                }
+            }
+                foundUser.save().then();
+            }else{console.log("no user")};
+        });
+    }
+
 module.exports.findOne = findOne;   
 module.exports.pushMeme = pushMeme;   
 module.exports.addUser = addUser;
 module.exports.deleteMeme = deleteMeme;
+module.exports.editMeme = editMeme

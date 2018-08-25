@@ -179,13 +179,22 @@
         <form method = 'post' action = '/edit' id = 'edit' enctype="multipart/form-data">
             <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
         <center><img src="/new/<%=memeImage%>" height="300px" width="450px"></center><br>
-           <label>Change picture here : </label> <input type="file" id="image" name="image"/><br>
-       <label> Change Title Here:  </label><input type = text name = 'memeTitle' placeholder = 'Current title is <%=memeTitle%>'>
+           <label>Change picture here : </label> <input type="file" id="image" name="image"'><br>
+       <label> Change Title Here:  </label><input type = text name = 'memeTitle' value =  '<%=memeTitle%>'>
     <p>Posted by: <a href = '/user-profile/<%=memeOwner%>'><%=memeOwner%></a></p>
-            <label>Edit Post Privacy Here: </label><label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='public'>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='private'id = 'private' >Private </label>
-        <p>Edit meme tags:</p>
-            <textarea rows="2" cols="45" name = 'memeTag' form = 'edit' placeholder = 'Current tags are : <%=memeTag%>'\></textarea> <br> 
-                    <input type = 'submit' value = 'Edit Post'>
+            <label>Edit Post Privacy Here: 
+                <% if(memePrivacy == 'Public') { %>
+            </label><label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "memePrivacy"id = "public" value='Public' checked>Public 
+            </label><label class="radio-inline"><input type="radio" name = "memePrivacy"  value='Private'id = 'private' >Private </label>
+                <% } else{ %>
+                </label><label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "memePrivacy"id = "public" value='Public'>Public 
+                </label><label class="radio-inline"><input type="radio" name = "memePrivacy"  value='Private'id = 'private' checked>Private </label>
+                <%}%>
+            <p>Edit meme tags:</p>
+            <!-- <textarea rows="2" cols="45" name = 'memeTag' form = 'edit' value =  '<%=memeTag%>'></textarea> <br>  -->
+            <input type = 'text' name = 'memeTag' value = '<%=memeTag%>' style = 'height:50px; width:300px;'><br>
+  
+            <input type = 'submit' value = 'Edit Post'>
                 </form>
             <form method = 'post' action = '/delete' enctype = "multipart/form-data">
                     <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
@@ -195,8 +204,9 @@
         <center><img src="/new/<%=memeImage%>" class = 'memeimage'></center>
         <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
     <p>Posted by: <a href = '/user-profile/<%=memeOwner%>'><%=memeOwner%></a></p>
-      <p>Post is :<label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='public' checked disabled>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='private'id = 'private' disabled>Private </label></p>
+      <p>Post is :<label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='Public' checked disabled>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='Private'id = 'private' disabled>Private </label></p>
             <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Current tags are : <%=memeTag%>' disabled = 'true'></textarea>
+            <br>
             <br>
             <br>
         <% } %>
@@ -215,7 +225,7 @@
                 <div class="quarter">
                     <% for(let i = 0;i<data.list.comment.length;i++){ %>
                         
-                    <fieldset class = 'field_set'><%=data.list.comment[i].commentDesc%> by <%=data.list.comment[i].commentOwner%></fieldset>
+                    <fieldset class = 'field_set' style = 'border:#555 solid;'><%=data.list.comment[i].commentDesc%> by <%=data.list.comment[i].commentOwner%></fieldset>
                         <hr>
                     <%  } %>
                 

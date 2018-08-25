@@ -8,6 +8,7 @@ const formidable = require('formidable');
 const fs = require('fs');//used for file upload
 
 function memeModule(server){
+  server.use(bodyparser.json());
   server.get('/inaccessible-meme', function(req,resp){
       resp.render('./pages/inaccessible-meme');
   });
@@ -52,10 +53,11 @@ function memeModule(server){
                               });
         });
       
-  server.post('/searched', function(req,resp){
+  server.get('/searched', function(req,resp){
       var form = new formidable.IncomingForm();
       form.parse(req, function(err, fields){
-      memeModel.searchMeme(fields.search, function(list){
+        console.log(req.query.search);
+      memeModel.searchMeme(req.query.search, function(list){
       const data = { list:list};
       var findUser = userModel.findOne(req.session.username);
        findUser.then((foundUser)=>
@@ -101,6 +103,8 @@ server.post('/delete', function(req,resp){
 server.post('/uploaded-meme', function(req,resp){
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
+      console.log(fields.memeTitle + 'huhu');
+      console.log(fields.memeTag + 'haha');
       var oldpath = files.image.path;
       var newpath = path.join('./','public','new',path.basename(files.image.path)+ files.image.name)
       fs.rename(oldpath, newpath, function (err) {
@@ -112,14 +116,31 @@ server.post('/uploaded-meme', function(req,resp){
             memePrivacy: fields.memePrivacy,
             memeShare: fields.memeShare
         }
-                memeModel.pushMeme(instance);
-                    userModel.pushMeme(instance, req.session.username);
+        
+                memeModel.pushMeme(instance)
+                userModel.pushMeme(instance);
+                resp.redirect('/');
                 if (err) throw err;
-
+                
       });//rename
     });//parse
-      resp.redirect('/');
+      
 });
+server.post('/edit', function(req,resp){
+  var form = new formidable.IncomingForm();
+  form.parse(req, function (err, fields, files) {
+    console.log(fields.tite);
+    var oldpath = files.image.path;
+    var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name)
+    fs.rename(oldpath, newpath, function (err) {
+      console.log(req.session.username);
+      userModel.editMeme(req.session.username, fields.memeID,fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy );
+        memeModel.editMeme(fields.memeID, fields.memeTitle, fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy);
+                    resp.redirect('/memeCall/' + fields.memeID);
+            });
+  });
+}) ;
+
 
 }
 module.exports.Activate = memeModule;
