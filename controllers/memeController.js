@@ -1,7 +1,8 @@
 const memeModel = require('../models/memeModel');
 const userModel = require('../models/userModel');
 const tagModel = require('../models/tagModel');
-
+const path = require('path');
+const bodyparser = require('body-parser');
 
 const formidable = require('formidable');
 const fs = require('fs');//used for file upload
@@ -76,7 +77,10 @@ server.post('/edit', function(req,resp){
 //                            console.log(req.body.memeID);
               console.log(fields.memeID);
             var oldpath = files.image.path;
-            var newpath = 'public\\new\\' + files.image.name;
+            var newpath = path.join('public','new',files.image.path)
+            console.log(oldpath);
+            console.log(files.image.path);
+            console.log(newpath);
             fs.rename(oldpath, newpath, function (err) {
                 memeModel.editMeme(fields.memeID, fields.memeTitle, fields.memeTag, files.image.name, fields.memePrivacy);
                             console.log(fields.memeID);
