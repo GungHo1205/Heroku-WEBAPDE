@@ -6,6 +6,10 @@ var memeSchema = mongoose.Schema({
         memeImage: String,
         memeOwner: String,
         memePrivacy: String,
+        comment:[{
+          commentOwner: String,
+          commentDesc: String
+        }]
 }); // meme schema
 
 
@@ -25,6 +29,16 @@ function pushMeme(meme){
     m.save();
 }
 
+
+
+function pushComment(search, comment){
+  memeModel.findOneAndUpdate({
+    _id: search
+    },{
+    $push: {comment: comment}
+  }).then();
+}
+
 function viewMeme(callback){
   memeModel.find({}, function (err, list) {
     if(err) return console.error(err);
@@ -32,9 +46,16 @@ function viewMeme(callback){
   });
 }
 
+function viewComment(search, callback){
+  memeModel.findOne({_id: search},{comment: 1}).then((list) => {
+    callback(list);
+  }, (err) => {
+
+  })
+}
+
 function searchMeme(search, callback){
   memeModel.find({memeTag: {$regex: search, $options: 'i'}}, function (err, list) {
-    console.log(search);
     if(err) return console.error(err);
     callback(list);
   });
@@ -42,7 +63,6 @@ function searchMeme(search, callback){
 
 function searchOwner(search, callback){
   memeModel.find({memeOwner: {$regex: search, $options: 'i'}}, function (err, list) {
-    console.log(search);
     if(err) return console.error(err);
     callback(list);
   });
@@ -62,7 +82,6 @@ function deleteMeme(search){
 }
     
 function findMeme(id){
-    console.log('this is id' + id);
     return memeModel.findOne({_id:id});
 }
 // first input is search]
@@ -73,3 +92,5 @@ module.exports.pushMeme = pushMeme;
 module.exports.addMeme = addMeme;
 module.exports.viewMeme = viewMeme;
 module.exports.findMeme = findMeme;
+module.exports.viewComment = viewComment;
+module.exports.pushComment = pushComment;

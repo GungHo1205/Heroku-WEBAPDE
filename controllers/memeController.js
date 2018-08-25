@@ -21,11 +21,11 @@ function memeModule(server){
        findUser.then((foundUser)=>{
            if(foundUser){
          var findMeme = memeModel.findMeme(req.params.id)
-         console.log('this is find meme ' + req.params.id);
+         memeModel.viewComment(req.params.id, function(list){
+           const data = {list: list}
       findMeme.then((foundMeme)=>
         {
           if(foundMeme){
-            console.log('tae');
               resp.render('./pages/meme1',{
                   username:req.session.username,
                   memeID: req.params.id,
@@ -33,31 +33,32 @@ function memeModule(server){
                   memeTag: foundMeme.memeTag ,
                   memeImage: foundMeme.memeImage,
                   memeOwner: foundMeme.memeOwner,
-                  memePrivacy: foundMeme.memePrivacy
+                  memePrivacy: foundMeme.memePrivacy,
+                  comment: foundMeme.comment,
+                  data: data
                                           })
                       }
                 else
                     {
                         resp.redirect('./inaccessible-meme');
                     }
-        })
-                    }
+                  })
+                });
+              }
                            else
                     {
                         resp.render('./pages/inaccessible-meme');
                     }
                               });
         });
-                    
+      
   server.post('/searched', function(req,resp){
       var form = new formidable.IncomingForm();
       form.parse(req, function(err, fields){
-      console.log('eat' + fields.search);
       memeModel.searchMeme(fields.search, function(list){
       const data = { list:list};
       var findUser = userModel.findOne(req.session.username);
        findUser.then((foundUser)=>
-                     console.log(foundUser));
       resp.render('./pages/index',{data:data, username:req.session.username});
         });
     });
@@ -74,35 +75,42 @@ server.get('/upload-meme', function(req,resp){
 server.post('/edit', function(req,resp){
           var form = new formidable.IncomingForm();
           form.parse(req, function (err, fields, files) {
-//                            console.log(req.body.memeID);
-              console.log(fields.memeID);
             var oldpath = files.image.path;
-            var newpath = path.join('public','new',files.image.path)
-            console.log(oldpath);
-            console.log(files.image.path);
-            console.log(newpath);
+            var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name)
             fs.rename(oldpath, newpath, function (err) {
-                memeModel.editMeme(fields.memeID, fields.memeTitle, fields.memeTag, files.image.name, fields.memePrivacy);
-                            console.log(fields.memeID);
+                memeModel.editMeme(fields.memeID, fields.memeTitle, fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy);
                             resp.redirect('/memeCall/' + fields.memeID);
                     });
           });
   }) ;
 
+  server.post('/add-comment', function(req, resp){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields){
+      let instance = {
+        commentOwner: req.session.username,
+        commentDesc: fields.comment 
+      }
+        memeModel.pushComment(fields.memeID, instance);
+
+        resp.redirect('/memeCall/' + fields.memeID)
+    });
+    
+  });
+
 server.post('/uploaded-meme', function(req,resp){
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.image.path;
-      var newpath = 'public\\new\\' + files.image.name;
+      var newpath = path.join('./','public','new',path.basename(files.image.path)+ files.image.name)
       fs.rename(oldpath, newpath, function (err) {
         var instance = {
             memeTitle: fields.memeTitle,
             memeTag: fields.memeTag,
-            memeImage: files.image.name,
+            memeImage: path.basename(files.image.path) + files.image.name,
             memeOwner: req.session.username,
             memePrivacy: fields.memePrivacy
         }
-        console.log(instance);
                 memeModel.pushMeme(instance);
                     userModel.pushMeme(instance, req.session.username);
                 if (err) throw err;

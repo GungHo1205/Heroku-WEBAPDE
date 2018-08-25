@@ -34,7 +34,6 @@ server.get('/index', function(req,resp){
       const data = { list:list};
       var findUser = userModel.findOne(req.session.username);
       //  findUser.then((foundUser)=>
-      //                console.log(foundUser));
       resp.render('./pages/index',{data:data, username:req.session.username});
     });
   });
@@ -45,9 +44,7 @@ server.get('/index', function(req,resp){
 
 server.get('/user-profile/:username', function(req,resp){
   memeModel.searchOwner(req.params.username, function(list){
-    console.log(req.params.username);
     const data = { list:list};
-    console.log(data);
       var findUser = userModel.findOne(req.params.username)
       findUser.then((foundUser)=>
         {
@@ -104,10 +101,10 @@ server.get('/user-profile/:username', function(req,resp){
     form.parse(req, function (err, fields, files) {
         var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
       var oldpath = files.image.path;
-      var newpath = "public\\new\\" + files.image.name;
+      var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name);
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
-        userModel.addUser(fields.username, files.image.name, hashedpassword ,fields.emailAddress, fields.shortBio, function(){
+        userModel.addUser(fields.username, path.basename(files.image.path) + files.image.name, hashedpassword ,fields.emailAddress, fields.shortBio, function(){
           resp.redirect('/');
         });//addUser
       });//rename

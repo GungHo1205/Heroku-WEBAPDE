@@ -4,35 +4,43 @@
     <title>Meme</title>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <script>
-//            var commentClass = function(comment,user){
-//                this.comment = comment;
-//                this.user = user;
-//            }
-//
-//            var list = [
-//                new commentClass("henlo","salcy"),
-//                new commentClass("hi","joshy"),
-//                new commentClass("tite","testy"),
-//            ];
-//            function addComment(){
-//                const comment = text(document.forms['enterComment'][''].value);
-//                console.log(comment);
-//                var allContent = '<div class="quarter">'+
-//                    '<div>Comment</div>'+
-//                    '<div>User</div>'+
-//                for(var i=0;i<list.length;i++){
-//                        const divContent = '<div class="quarter">'+
-//                            '<div>'+list[i].comment+'</div>'+
-//                            '<div>'+list[i].user+'</div>';
-//                        allContent += divContent;
-//                }//for
-//                
-//	           document.getElementById('comment-list').innerHTML = allContent;
-//            }
-//    
+        //    var commentClass = function(comment,user){
+        //        this.comment = comment;
+        //        this.user = user;
+        //    }
+
+        //    var list = [
+        //        new commentClass("henlo","salcy"),
+        //        new commentClass("hi","joshy"),
+        //        new commentClass("tite","testy"),
+        //    ];
+        //    function addComment(){
+        //        const comment = text(document.forms['enterComment'][''].value);
+        //        console.log(comment);
+        //        var allContent = '<div class="quarter">'+
+        //            '<div>Comment</div>'+
+        //            '<div>User</div>'+
+        //        for(var i=0;i<list.length;i++){
+        //                const divContent = '<div class="quarter">'+
+        //                    '<div>'+list[i].comment+'</div>'+
+        //                    '<div>'+list[i].user+'</div>';
+        //                allContent += divContent;
+        //        }//for
+               
+	    //        document.getElementById('comment-list').innerHTML = allContent;
+        //    }
+   
         </script>
 
         <style>
+                .memeimage{
+                    width: 80%;
+                    max-width: 960px;
+                    margin: 0 auto;
+                }
+                .field_set{
+                        border: #FF00 3px solid;
+                }
                 #profilepic{
                     border-radius: 50%;
                     height: 35px;
@@ -183,7 +191,8 @@
                      </a>
                 </form>
         <% } else { %>
-        <center><img src="/new/<%=memeImage%>" height="300px" width="450px"></center>
+        <center><img src="/new/<%=memeImage%>" class = 'memeimage'></center>
+        <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
     <p>Posted by: <a href = '/user-profile/<%=memeOwner%>'><%=memeOwner%></a></p>
       <p>Post is :<label class="radio-inline"><input type="radio" style = "border-width: 5px;" name = "privacy"id = "public" value='public' checked disabled>Public </label><label class="radio-inline"><input type="radio" name = "privacy"  value='private'id = 'private' disabled>Private </label></p>
             <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Current tags are : <%=memeTag%>' disabled = 'true'></textarea>
@@ -203,14 +212,19 @@
             <div id="comment-list">
                 <hr>
                 <div class="quarter">
-                    <div>comment</div>
-                    <div>user</div>
+                    <% for(let i = 0;i<data.list.comment.length;i++){ %>
+                        
+                    <fieldset class = 'field_set'><%=data.list.comment[i].commentDesc%> by <%=data.list.comment[i].commentOwner%></fieldset>
+                        <hr>
+                    <%  } %>
+                
                 </div>
                 <hr>
             </div>
             
-            <form onsubmit="addComment()" name="enterComment" method="get">
-                <textarea name="comments" id="comments">
+            <form action='/add-comment' id="addcomment" method="post" enctype="multipart/form-data">
+                <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
+                <textarea name="comment" id="comment" form = 'addcomment'>
                 </textarea>
                 <input type="submit" value="Comment">
             </form>

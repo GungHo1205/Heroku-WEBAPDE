@@ -34,8 +34,6 @@ function pushMeme(meme, username){
                 username:username},{
                 $push: {meme: meme}
     }).then();
-    console.log(meme);
-    console.log(userModel.meme);
 }
 
 module.exports.findOne = findOne;   
