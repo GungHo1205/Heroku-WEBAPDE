@@ -186,10 +186,11 @@
         <p>Edit meme tags:</p>
             <textarea rows="2" cols="45" name = 'memeTag' form = 'edit' placeholder = 'Current tags are : <%=memeTag%>'\></textarea> <br> 
                     <input type = 'submit' value = 'Edit Post'>
-                    <a href="/delete">
-                        <input type = 'button' value = 'Delete Post'>
-                     </a>
                 </form>
+            <form method = 'post' action = '/delete' enctype = "multipart/form-data">
+                    <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
+                    <input type = 'submit' value = 'Delete Post'>
+            </form>
         <% } else { %>
         <center><img src="/new/<%=memeImage%>" class = 'memeimage'></center>
         <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>

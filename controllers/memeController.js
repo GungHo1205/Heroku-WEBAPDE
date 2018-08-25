@@ -59,7 +59,8 @@ function memeModule(server){
       const data = { list:list};
       var findUser = userModel.findOne(req.session.username);
        findUser.then((foundUser)=>
-      resp.render('./pages/index',{data:data, username:req.session.username});
+      resp.render('./pages/index',{data:data, username:req.session.username})
+            )
         });
     });
   });
@@ -72,18 +73,16 @@ server.get('/upload-meme', function(req,resp){
         }
   }) ;
     
-server.post('/edit', function(req,resp){
+server.post('/delete', function(req,resp){
           var form = new formidable.IncomingForm();
           form.parse(req, function (err, fields, files) {
-            var oldpath = files.image.path;
-            var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name)
-            fs.rename(oldpath, newpath, function (err) {
-                memeModel.editMeme(fields.memeID, fields.memeTitle, fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy);
-                            resp.redirect('/memeCall/' + fields.memeID);
-                    });
+                memeModel.deleteMeme(fields.memeID);
+                            resp.redirect('/');
+                    
           });
   }) ;
 
+  
   server.post('/add-comment', function(req, resp){
     var form = new formidable.IncomingForm();
     form.parse(req, function(err, fields){

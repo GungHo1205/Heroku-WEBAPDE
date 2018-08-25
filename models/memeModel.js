@@ -77,8 +77,8 @@ function editMeme(id, memeTitle, memeTag, memeImage, memePrivacy){
 }
 function deleteMeme(search){
   memeModel.remove({
-                    search:search
-                  })
+                    _id:search
+                  }).then();
 }
     
 function findMeme(id){
@@ -94,3 +94,4 @@ module.exports.viewMeme = viewMeme;
 module.exports.findMeme = findMeme;
 module.exports.viewComment = viewComment;
 module.exports.pushComment = pushComment;
+module.exports.deleteMeme = deleteMeme;
