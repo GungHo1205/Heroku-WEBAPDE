@@ -76,6 +76,7 @@ server.get('/upload-meme', function(req,resp){
 server.post('/delete', function(req,resp){
           var form = new formidable.IncomingForm();
           form.parse(req, function (err, fields, files) {
+            // userModel.deleteMeme(fields.memeID);
                 memeModel.deleteMeme(fields.memeID);
                             resp.redirect('/');
                     
@@ -108,7 +109,8 @@ server.post('/uploaded-meme', function(req,resp){
             memeTag: fields.memeTag,
             memeImage: path.basename(files.image.path) + files.image.name,
             memeOwner: req.session.username,
-            memePrivacy: fields.memePrivacy
+            memePrivacy: fields.memePrivacy,
+            memeShare: fields.memeShare
         }
                 memeModel.pushMeme(instance);
                     userModel.pushMeme(instance, req.session.username);

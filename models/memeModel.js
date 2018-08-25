@@ -6,6 +6,7 @@ var memeSchema = mongoose.Schema({
         memeImage: String,
         memeOwner: String,
         memePrivacy: String,
+        memeShare: String,
         comment:[{
           commentOwner: String,
           commentDesc: String
@@ -40,10 +41,12 @@ function pushComment(search, comment){
 }
 
 function viewMeme(callback){
-  memeModel.find({}, function (err, list) {
-    if(err) return console.error(err);
+  memeModel.find().sort({time : -1}).then((list) => {
     callback(list);
-  });
+  }, (err) => {
+
+  })
+  
 }
 
 function viewComment(search, callback){

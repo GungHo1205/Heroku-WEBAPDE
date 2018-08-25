@@ -36,6 +36,16 @@ function pushMeme(meme, username){
     }).then();
 }
 
+function deleteMeme(search, callback){
+    userModel.remove(
+        {meme: search}, {meme: 1}, function(err){
+            if(err) return console.error(err)
+            callback();
+        }
+    ).then();
+}
+
 module.exports.findOne = findOne;   
 module.exports.pushMeme = pushMeme;   
 module.exports.addUser = addUser;
+module.exports.deleteMeme = deleteMeme;
