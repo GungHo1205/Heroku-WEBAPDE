@@ -13,6 +13,16 @@
       </style>
     <link href="./stylesheets/Login.css" rel="stylesheet"> <!--used for bootstrap design-->
     <link href="./stylesheets/signin.css" rel="stylesheet"> <!--used for bootstrap design-->
+    <script>
+      function PreviewImage() {
+          var Reader = new FileReader();
+          Reader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+  
+          Reader.onload = function (readerEvent) {
+              document.getElementById("uploadPreview").src = readerEvent.target.result;
+          };
+      };
+  </script>
   </head>
 
   <body>
@@ -21,9 +31,10 @@
         <center>
         <img src="./salcy.png" height="150px" width="150px">
         </center>
-      <form action='/signed-up'class="form-signin" enctype="multipart/form-data" method = "post">
+      <form action='/signed-up'class="form-signin" enctype="multipart/form-data" method = "post" id = 'form 1' runat = 'server'>
         <h2 class="form-signin-heading">Please sign up</h2>
-        <input type="file" id="image" name="image"/>
+        <img id="uploadPreview" style="width: 100px; height: 100px;" />
+        <input id="uploadImage" type="file" onchange="PreviewImage();" name = 'image'/>
         <label for="inputEmail" class="sr-only">Username</label>
         <input type="text" id="username" class="form-control" placeholder="Username" name = 'username' required autofocus >
         <label for="inputEmail" class="sr-only">Email address</label>
