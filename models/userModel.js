@@ -29,20 +29,27 @@ function findOne(username){
     
 }
 
-function pushMeme(meme){
+function pushMeme(username, meme){
     userModel.findOneAndUpdate({
-                username:meme.memeOwner},{
+                username:username},{
                 $push: {meme: meme}
     }).then();
 }
 
-function deleteMeme(search, callback){
-    userModel.remove(
-        {meme: search}, {meme: 1}, function(err){
-            if(err) return console.error(err)
-            callback();
+function deleteMeme(username,id){
+    userModel.findOne(
+        {username: username}
+    ).then((foundUser)=>{
+        if(foundUser){
+            for(let i = 0; i < foundUser.meme.length; i++){
+                console.log(foundUser.meme[i]._id + '  ' + id);
+                if(foundUser.meme[i]._id == id){
+                    foundUser.meme.splice(i, 1);
+                }
+            }
+            foundUser.save().then();
         }
-    ).then();
+    })
 }
 
 function editMeme(username, id, memeTitle, memeTag, memeImage, memePrivacy){
@@ -51,6 +58,8 @@ function editMeme(username, id, memeTitle, memeTag, memeImage, memePrivacy){
     }).then((foundUser) => {
         if(foundUser){
             for(let i = 0; i < foundUser.meme.length;i++){
+                console.log(foundUser.meme);
+                console.log(foundUser.meme._id + '' + id);
                 if(foundUser.meme[i]._id == id){
                     console.log('wow')
                     console.log(memeTitle);
@@ -66,6 +75,7 @@ function editMeme(username, id, memeTitle, memeTag, memeImage, memePrivacy){
                     console.log(foundUser.meme[i].memeImage);
                     console.log(foundUser.meme[i].memePrivacy);
                 }
+                else{console.log("no meme")};
             }
                 foundUser.save().then();
             }else{console.log("no user")};

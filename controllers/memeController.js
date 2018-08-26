@@ -78,7 +78,7 @@ server.get('/upload-meme', function(req,resp){
 server.post('/delete', function(req,resp){
           var form = new formidable.IncomingForm();
           form.parse(req, function (err, fields, files) {
-            // userModel.deleteMeme(fields.memeID);
+            userModel.deleteMeme(req.session.username,fields.memeID);
                 memeModel.deleteMeme(fields.memeID);
                             resp.redirect('/');
                     
@@ -103,8 +103,6 @@ server.post('/delete', function(req,resp){
 server.post('/uploaded-meme', function(req,resp){
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      console.log(fields.memeTitle + 'huhu');
-      console.log(fields.memeTag + 'haha');
       var oldpath = files.image.path;
       var newpath = path.join('./','public','new',path.basename(files.image.path)+ files.image.name)
       fs.rename(oldpath, newpath, function (err) {
@@ -117,11 +115,12 @@ server.post('/uploaded-meme', function(req,resp){
             memeShare: fields.memeShare
         }
         
-                memeModel.pushMeme(instance)
-                userModel.pushMeme(instance);
+                memeModel.pushMeme(instance, function(newInstance){
+                console.log(newInstance);
+                  userModel.pushMeme(req.session.username, newInstance);
                 resp.redirect('/');
                 if (err) throw err;
-                
+                })
       });//rename
     });//parse
       
@@ -134,7 +133,7 @@ server.post('/edit', function(req,resp){
     var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name)
     fs.rename(oldpath, newpath, function (err) {
       console.log(req.session.username);
-      userModel.editMeme(req.session.username, fields.memeID,fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy );
+      userModel.editMeme(req.session.username, fields.memeID,fields.memeTitle, fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy );
         memeModel.editMeme(fields.memeID, fields.memeTitle, fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy);
                     resp.redirect('/memeCall/' + fields.memeID);
             });

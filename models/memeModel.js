@@ -25,9 +25,12 @@ function addMeme(memeTitle,memeTag,memeImage, memeOwner, memePrivacy, callback){
   });
 }
 
-function pushMeme(meme){
+function pushMeme(meme, callback){
     var m = new memeModel(meme);
-    m.save();
+    m.save().then((newMeme) => {
+      callback(newMeme);
+    }, (err) => {
+    })
 }
 
 
@@ -44,7 +47,6 @@ function viewMeme(callback){
   memeModel.find().sort({time : -1}).then((list) => {
     callback(list);
   }, (err) => {
-
   })
   
 }
