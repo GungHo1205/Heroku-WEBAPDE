@@ -89,11 +89,20 @@ function findMeme(id){
 }
 
 function addLike(search, username){
-    memeModel.findOneAndUpdate({
-    _id: search
-    },{
-    $push: {likers: username}
-  }).then();
+    memeModel.findOne({search}).then((meme) => {
+      var found = 0;
+      for(i=0;i<meme.likers.length;i++){
+        if(meme.likers[i]==username)
+        found=1;
+      }
+      if(found==0){
+      memeModel.findOneAndUpdate({
+      _id: search
+      },{
+      $push: {likers: username}
+    }).then();
+    }
+    })
 }
 
 // first input is search]
