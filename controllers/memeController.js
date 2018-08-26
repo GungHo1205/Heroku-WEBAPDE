@@ -15,7 +15,15 @@ function memeModule(server){
 
     server.get('/search', function(req,resp){
       resp.render('./pages/search',{username:req.session.username});
-  });
+    });
+    
+    server.post('/likedMeme', function(req,resp){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields){
+        memeModel.addLike(req.body.id, req.session.username);
+        resp.redirect('/');
+    });
+    });
     
     server.get('/memeCall/:id', function(req,resp){
               var findUser = userModel.findOne(req.session.username);
@@ -53,7 +61,7 @@ function memeModule(server){
                               });
         });
       
-  server.get('/searched', function(req,resp){
+server.get('/searched', function(req,resp){
       var form = new formidable.IncomingForm();
       form.parse(req, function(err, fields){
         console.log(req.query.search);
