@@ -217,16 +217,19 @@
             <!-- </div> -->
                 <!-- <br> -->
             <!-- <span style = "display:inline;"> -->
-
+                <form action='/likedMeme' method="post" enctype = "multipart/form-data">
+                    <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
+                    <input type = 'submit' value= 'Like Meme'>
+                </form>
         <div id="comments">
             Comments:
             <div id="comment-list">
                 <hr>
                 <div class="quarter">
                     <% for(let i = 0;i<data.list.comment.length;i++){ %>
-                        
-                    <fieldset class = 'field_set' style = 'border:#555 solid;'><%=data.list.comment[i].commentDesc%> by <%=data.list.comment[i].commentOwner%></fieldset>
-                        <hr>
+                    <div id="commentcontent"><%=data.list.comment[i].commentDesc%></div>
+                    <div id="user">commented by <%=data.list.comment[i].commentOwner%></div>
+                    <hr>
                     <%  } %>
                 
                 </div>

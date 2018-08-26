@@ -1,0 +1,35 @@
+          <% if(username){ %>
+            <%if(data.list[i].memePrivacy == 'Public' || username == data.list[i].memeOwner){ %>
+                      <div id="memeblockstyle">
+                      <h1><%= data.list[i].memeTitle %></h1>
+                      <center><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></center>    
+                      <h3>Posted by <a href='/user-profile/<%=data.list[i].memeOwner%>'><%= data.list[i].memeOwner %></a></h3>
+                      <p><strong>Tags:</strong> <%= data.list[i].memeTag %></p>
+                      <form action = '/memeCall/<%=data.list[i]._id%>' >
+                        <input type = 'submit' value = 'View Meme'>
+                      </form>
+                      </div>
+                      <hr>
+                      <% }else if(data.list[i].memePrivacy == 'Private' && data.list[i].memeShare.includes(username)){%>
+                        <div id="memeblockstyle">
+                          <h1><%= data.list[i].memeTitle %></h1>
+                          <center><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></center>    
+                          <h3>Posted by <a href='/user-profile/<%=data.list[i].memeOwner%>'><%= data.list[i].memeOwner %></a></h3>
+                          <p><strong>Tags:</strong><%= data.list[i].memeTag %></p>
+                          <form action = '/memeCall/<%=data.list[i]._id%>' >
+                              <input type = 'submit' value = 'View Meme'>
+                          </form>
+                          </div>
+                          <hr>
+                        <%}%>
+            <% } else { %>
+              <%if(data.list[i].memePrivacy == 'Public' || username == data.list[i].memeOwner){ %>
+                      <div id="memeblockstyle">
+                      <h1><%= data.list[i].memeTitle %></h1>
+                      <center><p><a href='/inaccessible-meme'><img src="/new/<%= data.list[i].memeImage %>" id="meme"></a></p></center>
+                      <h3>Posted by <a href='/inaccessible-meme'><%= data.list[i].memeOwner %></a></h3>
+                      <p><strong>Tags:</strong><%= data.list[i].memeTag %></p>
+                      </div>
+                      <hr>
+                      <% }%>
+            <%    } %>

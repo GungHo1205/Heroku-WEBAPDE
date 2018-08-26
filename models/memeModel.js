@@ -2,11 +2,14 @@ const mongoose = require('./connectionModel').connection;
 
 var memeSchema = mongoose.Schema({
         memeTitle: String,
+        memeDate: Date,
+        memeTime: String,
         memeTag: String ,
         memeImage: String,
         memeOwner: String,
         memePrivacy: String,
         memeShare: String,
+        likers:[String],
         comment:[{
           commentOwner: String,
           commentDesc: String
@@ -16,15 +19,6 @@ var memeSchema = mongoose.Schema({
 
 var memeModel = mongoose.model('meme', memeSchema); // model used for database of memes
 
-
-function addMeme(memeTitle,memeTag,memeImage, memeOwner, memePrivacy, callback){
-  var instance = memeModel({ memeTitle: memeTitle, memeTag: memeTag,memeImage: image, memeOwner: memeOwner, memePrivacy: memePrivacy });
-  instance.save(function (err) {
-    if(err) return console.error(err);
-    callback();
-  });
-}
-
 function pushMeme(meme, callback){
     var m = new memeModel(meme);
     m.save().then((newMeme) => {
@@ -32,8 +26,6 @@ function pushMeme(meme, callback){
     }, (err) => {
     })
 }
-
-
 
 function pushComment(search, comment){
   memeModel.findOneAndUpdate({
@@ -89,14 +81,32 @@ function deleteMeme(search){
 function findMeme(id){
     return memeModel.findOne({_id:id});
 }
+
+function addLike(search, username){
+    memeModel.findOne({search}).then((meme) => {
+      var found = 0;
+      for(i=0;i<meme.likers.length;i++){
+        if(meme.likers[i]==username)
+        found=1;
+      }
+      if(found==0){
+      memeModel.findOneAndUpdate({
+      _id: search
+      },{
+      $push: {likers: username}
+    }).then();
+    }
+    })
+}
+
 // first input is search]
 module.exports.editMeme = editMeme;
 module.exports.searchOwner = searchOwner;
 module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
-module.exports.addMeme = addMeme;
 module.exports.viewMeme = viewMeme;
 module.exports.findMeme = findMeme;
 module.exports.viewComment = viewComment;
 module.exports.pushComment = pushComment;
 module.exports.deleteMeme = deleteMeme;
+module.exports.addLike = addLike;

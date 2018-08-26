@@ -3,6 +3,7 @@ const userModel = require('../models/userModel');
 const tagModel = require('../models/tagModel');
 const path = require('path');
 const bodyparser = require('body-parser');
+const timestamp = require('time-stamp');
 
 const formidable = require('formidable');
 const fs = require('fs');//used for file upload
@@ -15,7 +16,15 @@ function memeModule(server){
 
     server.get('/search', function(req,resp){
       resp.render('./pages/search',{username:req.session.username});
-  });
+    });
+    
+    server.post('/likedMeme', function(req,resp){
+      var form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+        memeModel.addLike(fields.memeID, req.session.username);
+        resp.redirect('/');
+      });
+    });
     
     server.get('/memeCall/:id', function(req,resp){
               var findUser = userModel.findOne(req.session.username);
@@ -29,6 +38,8 @@ function memeModule(server){
           if(foundMeme){
               resp.render('./pages/meme1',{
                   username:req.session.username,
+                  memeDate:foundMeme.memeDate,
+                  memeTime: foundMeme.memeTime,
                   memeID: req.params.id,
                   memeTitle: foundMeme.memeTitle,
                   memeTag: foundMeme.memeTag ,
@@ -53,7 +64,7 @@ function memeModule(server){
                               });
         });
       
-  server.get('/searched', function(req,resp){
+server.get('/searched', function(req,resp){
       var form = new formidable.IncomingForm();
       form.parse(req, function(err, fields){
         console.log(req.query.search);
@@ -108,13 +119,14 @@ server.post('/uploaded-meme', function(req,resp){
       fs.rename(oldpath, newpath, function (err) {
         var instance = {
             memeTitle: fields.memeTitle,
+            memeDate: Date(),
+            memeTime: timestamp("<YYYY-MM-DD-HH"),
             memeTag: fields.memeTag,
             memeImage: path.basename(files.image.path) + files.image.name,
             memeOwner: req.session.username,
             memePrivacy: fields.memePrivacy,
             memeShare: fields.memeShare
         }
-        
                 memeModel.pushMeme(instance, function(newInstance){
                 console.log(newInstance);
                   userModel.pushMeme(req.session.username, newInstance);

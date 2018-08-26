@@ -52,6 +52,7 @@ server.get('/user-profile/:username', function(req,resp){
             {
                         resp.render('./pages/user-profile',{username:req.session.username,
                          userProfile:foundUser.username,
+                         email:foundUser.email,
                          image:foundUser.image,
                          shortBio:foundUser.shortBio,
                          data:data
@@ -104,7 +105,7 @@ server.get('/user-profile/:username', function(req,resp){
       var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name);
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
-        userModel.addUser(fields.username, path.basename(files.image.path) + files.image.name, hashedpassword ,fields.emailAddress, fields.shortBio, function(){
+        userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
           resp.redirect('/');
         });//addUser
       });//rename

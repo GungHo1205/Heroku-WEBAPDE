@@ -1,6 +1,7 @@
 const mongoose = require('./connectionModel').connection;
 var userSchema = mongoose.Schema({
-	username: String,
+    username: String,
+    email: String,
 	image: String,
 	password: String,
 	shortBio: String,
@@ -14,9 +15,8 @@ var userSchema = mongoose.Schema({
 }); // user schema
 
 var userModel = mongoose.model('user', userSchema); // model used for database of userinfo
-function addUser(username,image, password, emailAddress, shortBio, callback){
-  var instance = new userModel({ username: username, image: image, password: password, emailAddress: emailAddress, shortBio: shortBio });
-  
+function addUser(username, email, image, password, shortBio, callback){
+  var instance = new userModel({ username: username, email:email, image: image, password: password, shortBio: shortBio });
   instance.save(function (err) {
     if(err) return console.error(err);
     callback();
