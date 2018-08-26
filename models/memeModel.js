@@ -2,6 +2,8 @@ const mongoose = require('./connectionModel').connection;
 
 var memeSchema = mongoose.Schema({
         memeTitle: String,
+        memeDate: Date,
+        memeTime: String,
         memeTag: String ,
         memeImage: String,
         memeOwner: String,
@@ -16,14 +18,6 @@ var memeSchema = mongoose.Schema({
 
 
 var memeModel = mongoose.model('meme', memeSchema); // model used for database of memes
-
-function addMeme(memeTitle,memeTag,memeImage, memeOwner, memePrivacy, callback){
-  var instance = memeModel({ memeTitle: memeTitle, memeTag: memeTag,memeImage: image, memeOwner: memeOwner, memePrivacy: memePrivacy });
-  instance.save(function (err) {
-    if(err) return console.error(err);
-    callback();
-  });
-}
 
 function pushMeme(meme, callback){
     var m = new memeModel(meme);
@@ -110,7 +104,6 @@ module.exports.editMeme = editMeme;
 module.exports.searchOwner = searchOwner;
 module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
-module.exports.addMeme = addMeme;
 module.exports.viewMeme = viewMeme;
 module.exports.findMeme = findMeme;
 module.exports.viewComment = viewComment;

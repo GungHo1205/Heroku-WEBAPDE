@@ -114,6 +114,7 @@
                       <h1><%= data.list[i].memeTitle %></h1>
                       <center><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></center>    
                       <h3>Posted by <a href='/user-profile/<%=data.list[i].memeOwner%>'><%= data.list[i].memeOwner %></a></h3>
+                      <p>on: <%= data.list[i].memeTime %></p>
                       <p><strong>Tags:</strong> <%= data.list[i].memeTag %></p>
                       <p><strong>Likes:</strong> <%= data.list[i].likers.length %></p>
                       <form action = '/memeCall/<%=data.list[i]._id%>' >
