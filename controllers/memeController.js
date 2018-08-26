@@ -79,7 +79,7 @@ server.get('/searched', function(req,resp){
   });
 server.get('/upload-meme', function(req,resp){
     if(req.session.username)
-      resp.render('./pages/upload-meme');
+      resp.render('./pages/upload-meme', {username:req.session.username});
     else
         {
         resp.redirect('./log-in')

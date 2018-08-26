@@ -22,22 +22,6 @@
       padding-top: 50px;
     }
     
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 800px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      background-color: lightgray;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
       #most-recent{
           font-size: 22px;
           margin-left: 0;
@@ -57,17 +41,7 @@
       font-size: 22px;
       border-width: 5px;  
       }
-	  center img:
 		  
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }
       #meme{
           height: 350px;
           width: auto;
@@ -95,10 +69,9 @@
 </head>
 <body>
     <%- include unloggedNavBar.ejs%>
-  
-    <center>
+    <div class="jumbotron">
         <p><strong>Sorry the page is inaccessible. Please log in <a href = '/log-in'>here</a> or <a href="javascript:history.back()">Go Back</a></strong></p>
-    </center>
+    </div>
     
 
 
