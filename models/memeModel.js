@@ -36,7 +36,7 @@ function pushComment(search, comment){
 }
 
 function viewMeme(callback){
-  memeModel.find().sort({time : -1}).then((list) => {
+  memeModel.find().sort({memeDate : -1}).then((list) => {
     callback(list);
   }, (err) => {
   })
@@ -52,14 +52,22 @@ function viewComment(search, callback){
 }
 
 function searchMeme(search, callback){
-  memeModel.find({memeTag: {$regex: search, $options: 'i'}}, function (err, list) {
+  console.log(search.split(','));
+  console.log(search.split(', '));
+  var split = search.split(', ');
+  console.log(split+ 'first');
+  split.toString();
+  console.log(split + 'second');
+  memeModel.find({$or : [{memeTag: {$in: search}}, {memeTag: {$in: search.split(', ')}}, {memeTag: {$in: search.split(', ').reverse()}}]}, function (err, list) {
     if(err) return console.error(err);
     callback(list);
   });
+  
 }
 
 function searchOwner(search, callback){
-  memeModel.find({memeOwner: {$regex: search, $options: 'i'}}, function (err, list) {
+
+  memeModel.find({memeOwner: search}, function (err, list) {
     if(err) return console.error(err);
     callback(list);
   });
@@ -83,7 +91,7 @@ function findMeme(id){
 }
 
 function addLike(search, username){
-    memeModel.findOne({search}).then((meme) => {
+    memeModel.findOne({_id: search}).then((meme) => {
       var found = 0;
       for(i=0;i<meme.likers.length;i++){
         if(meme.likers[i]==username)

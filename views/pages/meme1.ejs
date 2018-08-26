@@ -169,6 +169,7 @@
     <%    } %>
 
     <div class="jumbotron">
+        
         <% if(username == memeOwner){%>
         <form method = 'post' action = '/edit' id = 'edit' enctype="multipart/form-data">
             <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
@@ -229,7 +230,7 @@
                 </div>
                 <hr>
             </div>
-            
+        
             <form action='/add-comment' id="addcomment" method="post" enctype="multipart/form-data">
                 <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
                 <textarea name="comment" id="comment" form = 'addcomment'>
@@ -237,5 +238,6 @@
                 <input type="submit" value="Comment">
             </form>
         </div>
+    
 </body>
 </html>
