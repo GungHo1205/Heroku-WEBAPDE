@@ -78,12 +78,15 @@ server.get('/searched', function(req,resp){
     });
   });
 server.get('/upload-meme', function(req,resp){
+    userModel.findUsers(function(list){
+      const data = {list:list};
     if(req.session.username)
-      resp.render('./pages/upload-meme', {username:req.session.username});
+      resp.render('./pages/upload-meme', {data:data,username:req.session.username});
     else
         {
         resp.redirect('./log-in')
         }
+      })
   }) ;
     
 server.post('/delete', function(req,resp){

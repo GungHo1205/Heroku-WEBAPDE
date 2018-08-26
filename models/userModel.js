@@ -29,6 +29,13 @@ function findOne(username){
     
 }
 
+function findUsers(callback){
+    userModel.find({}, {username:1},function(err, list){
+        if(err) return console.error(err);
+        callback(list);
+    })
+}
+
 function pushMeme(username, meme){
     userModel.findOneAndUpdate({
                 username:username},{
@@ -58,22 +65,11 @@ function editMeme(username, id, memeTitle, memeTag, memeImage, memePrivacy){
     }).then((foundUser) => {
         if(foundUser){
             for(let i = 0; i < foundUser.meme.length;i++){
-                console.log(foundUser.meme);
-                console.log(foundUser.meme._id + '' + id);
                 if(foundUser.meme[i]._id == id){
-                    console.log('wow')
-                    console.log(memeTitle);
-                    console.log(memeTag);
-                    console.log(memeImage);
-                    console.log(memePrivacy);
                     foundUser.meme[i].memeTitle = memeTitle;
                     foundUser.meme[i].memeTag = memeTag;
                     foundUser.meme[i].memeImage = memeImage;
                     foundUser.meme[i].memePrivacy = memePrivacy;
-                    console.log(foundUser.meme[i].memeTitle);
-                    console.log(foundUser.meme[i].memeTag);
-                    console.log(foundUser.meme[i].memeImage);
-                    console.log(foundUser.meme[i].memePrivacy);
                 }
                 else{console.log("no meme")};
             }
@@ -86,4 +82,5 @@ module.exports.findOne = findOne;
 module.exports.pushMeme = pushMeme;   
 module.exports.addUser = addUser;
 module.exports.deleteMeme = deleteMeme;
-module.exports.editMeme = editMeme
+module.exports.editMeme = editMeme;
+module.exports.findUsers = findUsers;

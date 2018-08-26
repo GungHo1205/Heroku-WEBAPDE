@@ -47,7 +47,7 @@
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload'>
+              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload' autocomplete="off">
                 <div id="imageBorder">
                         <div id="imageContainer">
                           <div id="dropbox">
@@ -65,7 +65,13 @@
             </div>
             <div class="form-group">
               <label for="share">Share to users:</label>
-               <input type = 'text' name = 'memeShare' id = 'memeShare'>
+               <input type = 'text' name = 'memeShare' id = 'memeShare' list = 'users'>
+               <datalist id = 'users'>
+                    <%for(let i = 0; i< data.list.length;i++){ %>
+                   <option value = '<%=data.list[i].username%>'</option>
+                    <%}%>
+               </datalist>
+            
             </div> 
             <div>
                 <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public' id ='memePrivacy1' checked>Public</label>
