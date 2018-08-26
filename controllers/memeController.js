@@ -18,11 +18,11 @@ function memeModule(server){
     });
     
     server.post('/likedMeme', function(req,resp){
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields){
-        memeModel.addLike(req.body.id, req.session.username);
+      var form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+        memeModel.addLike(fields.memeID, req.session.username);
         resp.redirect('/');
-    });
+      });
     });
     
     server.get('/memeCall/:id', function(req,resp){

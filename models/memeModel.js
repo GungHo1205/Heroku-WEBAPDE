@@ -7,7 +7,6 @@ var memeSchema = mongoose.Schema({
         memeOwner: String,
         memePrivacy: String,
         memeShare: String,
-        likes: Number,
         likers:[String],
         comment:[{
           commentOwner: String,
@@ -17,14 +16,6 @@ var memeSchema = mongoose.Schema({
 
 
 var memeModel = mongoose.model('meme', memeSchema); // model used for database of memes
-
-function addLike(search, username){
-    memeModel.findOneAndUpdate({
-    _id: search
-    },{
-    $push: {likers: username}
-  }).then();
-}
 
 function addMeme(memeTitle,memeTag,memeImage, memeOwner, memePrivacy, callback){
   var instance = memeModel({ memeTitle: memeTitle, memeTag: memeTag,memeImage: image, memeOwner: memeOwner, memePrivacy: memePrivacy });
@@ -41,8 +32,6 @@ function pushMeme(meme, callback){
     }, (err) => {
     })
 }
-
-
 
 function pushComment(search, comment){
   memeModel.findOneAndUpdate({
@@ -99,6 +88,14 @@ function findMeme(id){
     return memeModel.findOne({_id:id});
 }
 
+function addLike(search, username){
+    memeModel.findOneAndUpdate({
+    _id: search
+    },{
+    $push: {likers: username}
+  }).then();
+}
+
 // first input is search]
 module.exports.editMeme = editMeme;
 module.exports.searchOwner = searchOwner;
@@ -110,3 +107,4 @@ module.exports.findMeme = findMeme;
 module.exports.viewComment = viewComment;
 module.exports.pushComment = pushComment;
 module.exports.deleteMeme = deleteMeme;
+module.exports.addLike = addLike;

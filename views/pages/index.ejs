@@ -61,7 +61,6 @@
       font-size: 22px;
       border-width: 5px;  
       }
-	  center img:
 		  
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -116,10 +115,7 @@
                       <center><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></center>    
                       <h3>Posted by <a href='/user-profile/<%=data.list[i].memeOwner%>'><%= data.list[i].memeOwner %></a></h3>
                       <p><strong>Tags:</strong> <%= data.list[i].memeTag %></p>
-                      <p><strong>Likes:</strong> <% data.lis[i].likes.length %></p>
-                      <form acion='/likedMeme'>
-                          <input type = 'submit' value= 'Like Meme'>
-                      </form>
+                      <p><strong>Likes:</strong> <%= data.list[i].likers.length %></p>
                       <form action = '/memeCall/<%=data.list[i]._id%>' >
                         <input type = 'submit' value = 'View Meme'>
                       </form>
@@ -148,7 +144,7 @@
                       </div>
                       <hr>
                       <% }%>
-            <%    } %>
+            <%  } %>
       <% } %>
     </div>
     <div class="col-sm-2 sidenav">

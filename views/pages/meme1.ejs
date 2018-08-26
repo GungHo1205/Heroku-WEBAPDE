@@ -217,7 +217,10 @@
             <!-- </div> -->
                 <!-- <br> -->
             <!-- <span style = "display:inline;"> -->
-
+                <form action='/likedMeme' method="post" enctype = "multipart/form-data">
+                    <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
+                    <input type = 'submit' value= 'Like Meme'>
+                </form>
         <div id="comments">
             Comments:
             <div id="comment-list">
