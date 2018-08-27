@@ -20,6 +20,7 @@ var memeSchema = mongoose.Schema({
 
 
 var memeModel = mongoose.model('meme', memeSchema); // model used for database of memes
+var counter=5;
 
 function pushMeme(meme, callback){
     var m = new memeModel(meme);
@@ -38,11 +39,19 @@ function pushComment(search, comment){
 }
 
 function viewMeme(callback){
-  memeModel.find().sort({memeDate : -1}).then((list) => {
+  counter=0;
+  memeModel.find().sort({memeDate : -1}).limit(5).then((list) => {
     callback(list);
   }, (err) => {
   })
-  
+}
+
+function viewNextMemes(callback){
+  counter=counter+5;
+  memeModel.find().sort({memeDate : -1}).limit(counter).then((list) => {
+    callback(list);
+  }, (err) => {
+  })
 }
 
 function viewComment(search, callback){
@@ -109,6 +118,7 @@ module.exports.searchOwner = searchOwner;
 module.exports.searchMeme = searchMeme;
 module.exports.pushMeme = pushMeme;
 module.exports.viewMeme = viewMeme;
+module.exports.viewNextMemes = viewNextMemes;
 module.exports.findMeme = findMeme;
 module.exports.viewComment = viewComment;
 module.exports.pushComment = pushComment;

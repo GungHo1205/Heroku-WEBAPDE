@@ -38,6 +38,15 @@ server.get('/index', function(req,resp){
     });
   });
 
+  server.post('/loadMore', function(req,resp){
+    memeModel.viewNextMemes(function(list){
+    const data = { list:list};
+    let findUser = userModel.findOne(req.session.username);
+    //  findUser.then((foundUser)=>
+    resp.render('./pages/index',{data:data, username:req.session.username});
+  });
+});
+
   server.get('/log-in', function(req,resp){
       resp.render('./pages/log-in');
   });
