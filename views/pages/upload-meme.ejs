@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Upload a Meme!</title>
+    
 <link rel="icon" href="./icon.png">
     <link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap.min.css" /> <!--for style-->
     <link rel="stylesheet" type="text/css" href="./stylesheets/font-awesome.min.css" /> <!--for style-->
@@ -29,22 +30,24 @@
               document.getElementById("uploadPreview").src = readerEvent.target.result;
           };
       };
+
+
   </script>
 
 </head>
 <body>
-
+<%- include loggedNavBar.ejs %>
+</br>
+</br>
+</br>
 <div class="container">
-
 <div class="page-header">
     <h1>Upload a meme to Ememerald!</h1>
 </div>
-
-<!-- Bootstrap Upload Control - START -->
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload'>
+              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload' autocomplete="off">
                 <div id="imageBorder">
                         <div id="imageContainer">
                           <div id="dropbox">
@@ -52,21 +55,27 @@
                           </div>
                         </div>
                     </div>  
-                <input id="uploadImage" type="file" onchange="PreviewImage();" name = 'image' accept="image/*"/>       
+                <input id="uploadImage" type="file" onchange="PreviewImage();" name = 'image' accept="image/*" required/>       
             <br>
             <p>Enter meme Title</p>
-            <input type = 'text' name = 'memeTitle'>
+            <input type = 'text' name = 'memeTitle' required>
             <p>Select your tags!</p>
             <div>
                 <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Type your memes here separated by commas(,)'></textarea>
             </div>
             <div class="form-group">
               <label for="share">Share to users:</label>
-               <input type = 'text' name = 'memeShare'>
+               <input type = 'text' name = 'memeShare' id = 'memeShare' list = 'users'>
+               <datalist id = 'users'>
+                    <%for(let i = 0; i< data.list.length;i++){ %>
+                   <option value = '<%=data.list[i].username%>'</option>
+                    <%}%>
+               </datalist>
+            
             </div> 
             <div>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public'>Public</label>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private'>Private</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public' id ='memePrivacy1' checked>Public</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private'id = 'memePrivacy2'>Private</label>
             </div>
             <p style="text-align: right; margin-top: 20px;">
             <input class="btn btn-lg btn-primary btn-block" type = "submit" value='Upload Meme'>
@@ -79,6 +88,17 @@
 
 
 </div>
-
+<script>
+    if( document.getElementById('memePrivacy1').value == 'Public'){
+        document.getElementById('memeShare').disabled = true;
+    }
+    document.getElementById('memePrivacy1').addEventListener("click", function(){
+            document.getElementById('memeShare').disabled = true;
+    })
+    document.getElementById('memePrivacy2').addEventListener("click", function(){
+            document.getElementById('memeShare').disabled = false;
+            document.getElementById('memeShare').required = true;
+    })
+</script>
 </body>
 </html>

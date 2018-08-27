@@ -167,14 +167,9 @@
     <% } else { %>
         <%- include unloggedNavBar.ejs%>
     <%    } %>
-    <div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <div id = 'most-recent'><p><a href="#"><strong>View Most Recent</strong></a></p></div>
-      <div id = 'most-liked'><p><a href="#"><strong>View Most Liked</strong></a></p></div>
-      <div id = 'trending'><p><a href="#"><strong>View Trending</strong></a></p></div>
-    </div>
-    <div class="col-sm-8 text-left">
+
+    <div class="jumbotron">
+        
         <% if(username == memeOwner){%>
         <form method = 'post' action = '/edit' id = 'edit' enctype="multipart/form-data">
             <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
@@ -235,7 +230,7 @@
                 </div>
                 <hr>
             </div>
-            
+        
             <form action='/add-comment' id="addcomment" method="post" enctype="multipart/form-data">
                 <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
                 <textarea name="comment" id="comment" form = 'addcomment'>
@@ -243,28 +238,6 @@
                 <input type="submit" value="Comment">
             </form>
         </div>
-        </div>
-        <div class="col-sm-2 sidenav">
-          <div class="well">
-            <p>Titan gel.jpg</p>
-          </div>
-          <div class="well">
-            <p>MnF.gif</p>
-          </div>
-          <div class="well">
-            <p id = 'ad 2'>lazada.jpg</p>
-          </div>
-          <div class="well">
-            <p id = 'ad 2'>olx.gif</p>
-          </div>
-          <div class="well">
-            <p id = 'ad 2'>shopee.jpg</p>
-          </div>
-          <div class="well">
-            <p id = 'ad 2'>robust.gif</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 </body>
 </html>
