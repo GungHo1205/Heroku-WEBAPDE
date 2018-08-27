@@ -1,4 +1,4 @@
-const userModel = require('../models/userModel');
+  const userModel = require('../models/userModel');
 const memeModel = require('../models/memeModel')
 const formidable = require('formidable');
 const crypto = require("crypto");
@@ -104,6 +104,10 @@ server.get('/user-profile/:username', function(req,resp){
       var oldpath = files.image.path;
       var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name);
       fs.rename(oldpath, newpath, function (err) {
+        fs.unlink(oldpath, function (err) {
+          if (err) throw err;
+          console.log('File deleted!');
+      });
         if (err) throw err;
         userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
           resp.redirect('/');
