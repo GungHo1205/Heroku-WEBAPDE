@@ -125,17 +125,17 @@ server.get('/user-profile/:username', function(req,resp){
 // }
 
 server.post('/signed-up', function(req,resp){
+
   var form = new formidable.IncomingForm();
   form.parse(req, function (err, fields, files) {
       var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
-    
       var is = fs.createReadStream(files.image.path);
       var os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path) + files.image.name));
       is.pipe(os);
       is.on('end',function() {
           fs.unlinkSync(files.image.path);
       });
-      
+
         userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
 
       if (err) throw err;
@@ -143,6 +143,7 @@ server.post('/signed-up', function(req,resp){
     });
     });//post
 });
+
 }
 
 module.exports.Activate = userModule;
