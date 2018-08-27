@@ -30,13 +30,18 @@ function commentModule(server){
     server.post('/add-nested', function(req, resp){
         let form = new formidable.IncomingForm();
         form.parse(req, function(err, fields){
+            console.log(fields.memeID);
+            console.log(req.session.username);
+            console.log(fields.comment1);
           let instance = {
             _memeID: fields.memeID,
             commentOwner: req.session.username,
-            commentDesc: fields.comment ,
+            commentDesc: fields.comment1 ,
             nestedComments:[]
                 }
+                console.log('this is instance ' + instance);
             commentModel.pushNested(fields.memeID, instance, function(newInstance){
+                console.log('this is newinstance ' + newInstance);
                 memeModel.pushComment(fields.memeID, newInstance);
                 resp.redirect('/memeCall/' + fields.memeID)
              })

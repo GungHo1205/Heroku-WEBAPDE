@@ -22,7 +22,7 @@ function memeModule(server){
       let form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
         memeModel.addLike(fields.memeID, req.session.username);
-        resp.redirect('/');
+        resp.redirect('/memeCall/' + fields.memeID);
       });
     });
     
