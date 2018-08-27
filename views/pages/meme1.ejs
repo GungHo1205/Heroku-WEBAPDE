@@ -224,9 +224,17 @@
                     <% for(let i = 0;i<data.list.comment.length;i++){ %>
                     <div id="commentcontent"><%=data.list.comment[i].commentDesc%></div>
                     <div id="user">commented by <%=data.list.comment[i].commentOwner%></div>
+                    <div id="reply">
+                        <% for(let j = 0;j<data.list.nestedComments;j++){ %>
+                            <%=data.list.nestedComments[i].commentDesc%>
+                        <%  } %>
+                        </div>
                     <div>
-                        <form action='/add-nested' method='post'>
-                        <input type="submit" value="Reply">
+                        <form action='/add-nested' id="addNested" method="post" enctype="multipart/form-data">
+                            <input type = 'hidden' value = '<%=memeID%>' name = 'memeID'>
+                            <textarea name="comment1" id="comment" form = 'addNested'>
+                            </textarea>
+                            <input type="submit" value="reply">
                         </form>
                     </div>
                     <hr>

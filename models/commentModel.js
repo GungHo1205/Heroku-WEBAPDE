@@ -29,13 +29,17 @@ function pushComment(comment, callback){
 }
 
 function pushNested(search, comment, callback){
+    console.log('model comment '+ comment);
     var c = new commentModel(comment);
         c.save().then((newComment) => {
+            console.log('newcomment  ' + newComment);
+            console.log('newcomment id ' + newComment._memeID);
             commentModel.findOneAndUpdate({
-                _id: search
+                _memeID: search
             }, {
                 $push: {nestedComments: newComment._id}
             }).then((henlo) => {
+                console.log('made henlo');
                 console.log(henlo);
             }, (err) =>{
 

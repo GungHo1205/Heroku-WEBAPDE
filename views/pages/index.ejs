@@ -111,26 +111,20 @@
             <%if(data.list[i].memePrivacy == 'Public' || username == data.list[i].memeOwner){ %>
                       <div id="memeblockstyle">
                       <h1><%= data.list[i].memeTitle %></h1>
-                      <center><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></center>    
+                      <center><a href='/memeCall/<%=data.list[i]._id%>'><p><img src="/new/<%= data.list[i].memeImage %>" id="meme" ></p></a></center>    
                       <h3>Posted by <a href='/user-profile/<%=data.list[i].memeOwner%>'><%= data.list[i].memeOwner %></a></h3>
                       <p>on: <%= data.list[i].memeTime %>></p>
-                      <p><strong>Tags:</strong> <%= data.list[i].memeTag %></p>
+                      <p><strong>Tags:</strong><a href = '/searched?search=<%= data.list[i].memeTag %>'><%= data.list[i].memeTag %></a></p>
                       <p><strong>Likes:</strong> <%= data.list[i].likers.length %></p>
-                      <form action = '/memeCall/<%=data.list[i]._id%>' >
-                        <input type = 'submit' value = 'View Meme'>
-                      </form>
                       </div>
                       <hr>
                       <!-- username == data.list[i].memeShare.includes(username) -->
                       <% }else if(data.list[i].memePrivacy == 'Private' && data.list[i].memeShare.includes(username)){%>
                         <div id="memeblockstyle">
                           <h1><%= data.list[i].memeTitle %></h1>
-                          <center><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></center>    
+                          <center><a href='/memeCall/<%=data.list[i]._id%>'><p><img src="/new/<%= data.list[i].memeImage %>" id="meme"></p></a></center>    
                           <h3>Posted by <a href='/user-profile/<%=data.list[i].memeOwner%>'><%= data.list[i].memeOwner %></a></h3>
-                          <p><strong>Tags:</strong><%= data.list[i].memeTag %>></p>
-                          <form action = '/memeCall/<%=data.list[i]._id%>' >
-                              <input type = 'submit' value = 'View Meme'>
-                          </form>
+                          <p><strong>Tags:</strong><a href = '/searched?search=<%= data.list[i].memeTag %>'><%= data.list[i].memeTag %></a></p>
                           </div>
                           <hr>
                         <%}%>
@@ -146,6 +140,9 @@
                       <% }%>
             <%  } %>
       <% } %>
+      <form action="/loadMore" method="post">
+      <input type="submit" value="load more">
+      </form>
       </div>
     </div>
 </body>

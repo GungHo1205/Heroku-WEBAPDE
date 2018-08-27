@@ -12,7 +12,7 @@ const urlencoder = bodyparser.urlencoded({
   server.set('views', path.join(__dirname, 'views'));
   server.set('view engine', 'ejs');
 
-const controllers = ['user','meme'];
+const controllers = ['user','meme', 'comment'];
 for(var i=0;i<controllers.length;i++){
   const mdl = require('./controllers/'+controllers[i]+'Controller');
   mdl.Activate(server);

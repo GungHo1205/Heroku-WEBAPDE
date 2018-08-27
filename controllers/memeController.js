@@ -22,7 +22,7 @@ function memeModule(server){
       let form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
         memeModel.addLike(fields.memeID, req.session.username);
-        resp.redirect('/');
+        resp.redirect('/memeCall/' + fields.memeID);
       });
     });
     
@@ -88,7 +88,19 @@ server.get('/upload-meme', function(req,resp){
         }
       })
   }) ;
-    
+  
+  server.get('/multi-upload', function(req,resp){
+    userModel.findUsers(function(list){
+      const data = {list:list};
+    if(req.session.username)
+      resp.render('./pages/multi-upload', {data:data,username:req.session.username});
+    else
+        {
+        resp.redirect('./log-in')
+        }
+      })
+  }) ;
+
 server.post('/delete', function(req,resp){
           let form = new formidable.IncomingForm();
           form.parse(req, function (err, fields, files) {
@@ -126,6 +138,56 @@ server.post('/uploaded-meme', function(req,resp){
                 })
       });//rename
     });//parse
+
+    server.post('/multi-uploaded-meme', function(req,resp){
+      let form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+        let is = fs.createReadStream (files.image.path);
+        let os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path)+ files.image.name))
+        is.pipe(os);
+        is.on('end',function() {
+            fs.unlinkSync(files.image.path);
+        });
+        let is2 = fs.createReadStream (files.image2.path);
+        let os2 = fs.createWriteStream(path.join('./','public','new',path.basename(files.image2.path)+ files.image2.name))
+        is2.pipe(os2);
+        is2.on('end',function() {
+            fs.unlinkSync(files.image2.path);
+        });
+          let instance = {
+              memeTitle: fields.memeTitle,
+              memeDate: Date(),
+              memeTime: timestamp("<YYYY-MM-DD-HH"),
+              memeTag: fields.memeTag,
+              memeImage: path.basename(files.image.path) + files.image.name,
+              memeOwner: req.session.username,
+              memePrivacy: fields.memePrivacy,
+              memeShare: fields.memeShare
+          }
+          let instance2 = {
+            memeTitle: fields.memeTitle2,
+            memeDate: Date(),
+            memeTime: timestamp("<YYYY-MM-DD-HH"),
+            memeTag: fields.memeTag2,
+            memeImage: path.basename(files.image2.path) + files.image2.name,
+            memeOwner: req.session.username,
+            memePrivacy: fields.memePrivacy2,
+            memeShare: fields.memeShare2
+        }
+                  memeModel.pushMeme(instance, function(newInstance){
+                  console.log(newInstance);
+                    userModel.pushMeme(req.session.username, newInstance);
+                  if (err) throw err;
+                  })
+                  memeModel.pushMeme(instance2, function(newInstance){
+                    console.log(newInstance);
+                    userModel.pushMeme(req.session.username, newInstance);
+                    resp.redirect('/');
+                    if (err) throw err;
+                    })
+        });//rename
+      });//parse
+
 server.post('/edit', function(req,resp){
   let form = new formidable.IncomingForm();
   form.parse(req, function (err, fields, files) {

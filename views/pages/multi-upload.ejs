@@ -20,6 +20,11 @@
             width: 100px; 
             height: 100px;
           }
+          #uploadPreview2{
+            align-content: center;
+            width: 100px; 
+            height: 100px;
+          }
     </style>
     <script>
           function PreviewImage() {
@@ -28,6 +33,12 @@
   
           Reader.onload = function (readerEvent) {
               document.getElementById("uploadPreview").src = readerEvent.target.result;
+          };
+          let Reader2 = new FileReader();
+          Reader2.readAsDataURL(document.getElementById("uploadImage2").files[0]);
+  
+          Reader2.onload = function (readerEvent2) {
+              document.getElementById("uploadPreview2").src = readerEvent2.target.result;
           };
       };
 
@@ -42,13 +53,13 @@
 </br>
 <div class="container">
 <div class="page-header">
-    <h1>Upload a meme to Ememerald!</h1>
+    <h1>Upload memes to Ememerald!</h1>
 </div>
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload' autocomplete="off">
-                <div id="imageBorder" type="file" onchange="PreviewImage();" name = 'image' accept="image/*">
+              <form action='/multi-uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload' autocomplete="off">
+                <div id="imageBorder">
                         <div id="imageContainer">
                           <div id="dropbox">
                            <img id="uploadPreview" />
@@ -74,12 +85,45 @@
             
             </div> 
             <div>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public' id ='memePrivacy1' checked>Public</label>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private'id = 'memePrivacy2'>Private</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public' checked>Public</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private' >Private</label>
             </div>
+            </br>
+        </br>
+    </br>
+            
+
+                            <div id="imageBorder">
+                                <div id="imageContainer">
+                                <div id="dropbox">
+                                <img id="uploadPreview2" />
+                                </div>
+                                </div>
+                            </div>  
+                        <input id="uploadImage2" type="file" onchange="PreviewImage();" name = 'image2' accept="image/*" required/>       
+                    <br>
+                    <p>Enter meme Title</p>
+                    <input type = 'text' name = 'memeTitle2' required>
+                    <p>Select your tags!</p>
+                    <div>
+                        <textarea rows="2" cols="45" name = 'memeTag2' form = 'upload' placeholder = 'Type your memes here separated by commas(,)'></textarea>
+                    </div>
+                    <div class="form-group">
+                    <label for="share">Share to users:</label>
+                    <input type = 'text' name = 'memeShare2' id = 'memeShare2' list = 'users2'>
+                    <datalist id = 'users2'>
+                            <%for(let i = 0; i< data.list.length;i++){ %>
+                        <option value = '<%=data.list[i].username%>'</option>
+                            <%}%>
+                    </datalist>
+                    
+                    </div> 
+                    <div>
+                        <label class="radio-inline"><input type="radio" name="memePrivacy2" value = 'Public'  checked>Public</label>
+                        <label class="radio-inline"><input type="radio" name="memePrivacy2" value = 'Private' >Private</label>
+                    </div>           
             <p style="text-align: right; margin-top: 20px;">
             <input class="btn btn-lg btn-primary btn-block" type = "submit" value='Upload Meme'>
-            <a href="/multi-upload" class="btn btn-lg btn-secondary">Upload Multiple Memes</a>
             <a href="javascript:history.back()" class="btn btn-lg btn-secondary">Cancel Upload</a>
             </p>
         </form>
