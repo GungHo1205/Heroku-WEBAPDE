@@ -97,29 +97,52 @@ server.get('/user-profile/:username', function(req,resp){
     });
   });
 
-  server.post('/signed-up', function(req,resp){
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-        var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
-      var oldpath = files.image.path;
-      var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name);
-      fs.readFile(oldpath, function (err, data) {
-        if (err) throw err;
-        console.log('File read!');
-        fs.writeFile(newpath, data, function (err) {
-          if (err) throw err;
-          console.log('File written!');
-          userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
-        fs.unlink(oldpath, function (err) {
-          if (err) throw err;
-          console.log('File deleted!');
+//   server.post('/signed-up', function(req,resp){
+//     var form = new formidable.IncomingForm();
+//     form.parse(req, function (err, fields, files) {
+//         var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
+//       var oldpath = files.image.path;
+//       var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name);
+//       fs.readFile(oldpath, function (err, data) {
+//         if (err) throw err;
+//         console.log('File read!');
+//         fs.writeFile(newpath, data, function (err) {
+//           if (err) throw err;
+//           console.log('File written!');
+//           userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
+//         is.pipe(os);
+//             fs.unlink(oldpath, function (err) {
+//           if (err) throw err;
+//           console.log('File deleted!');
+//       });
+//         if (err) throw err;
+//           resp.redirect('/');
+//         });//addUser
+//       });//rename
+//     });//parse
+//   });
+//   });//post
+// }
+
+server.post('/signed-up', function(req,resp){
+  var form = new formidable.IncomingForm();
+  form.parse(req, function (err, fields, files) {
+      var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
+    
+      var is = fs.createReadStream(files.image.path);
+      var os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path) + files.image.name));
+      is.pipe(os);
+      is.on('end',function() {
+          fs.unlinkSync(files.image.path);
       });
-        if (err) throw err;
-          resp.redirect('/');
-        });//addUser
-      });//rename
-    });//parse
-  });
-  });//post
+      
+        userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
+
+      if (err) throw err;
+        resp.redirect('/');
+    });
+    });//post
+});
 }
+
 module.exports.Activate = userModule;
