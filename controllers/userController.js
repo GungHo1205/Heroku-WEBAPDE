@@ -103,18 +103,23 @@ server.get('/user-profile/:username', function(req,resp){
         var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
       var oldpath = files.image.path;
       var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name);
-      fs.rename(oldpath, newpath, function (err) {
+      fs.readFile(oldpath, function (err, data) {
+        if (err) throw err;
+        console.log('File read!');
+        fs.writeFile(newpath, data, function (err) {
+          if (err) throw err;
+          console.log('File written!');
+          userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
         fs.unlink(oldpath, function (err) {
           if (err) throw err;
           console.log('File deleted!');
       });
         if (err) throw err;
-        userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
           resp.redirect('/');
         });//addUser
       });//rename
     });//parse
-      
+  });
   });//post
 }
 module.exports.Activate = userModule;
