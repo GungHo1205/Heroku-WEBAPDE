@@ -13,7 +13,7 @@ function commentModule(server){
 
 
     server.post('/add-comment', function(req, resp){
-        var form = new formidable.IncomingForm();
+        let form = new formidable.IncomingForm();
         form.parse(req, function(err, fields){
           let instance = {
             _memeID: fields.memeID,
@@ -28,7 +28,7 @@ function commentModule(server){
         });
 
     server.post('/add-nested', function(req, resp){
-        var form = new formidable.IncomingForm();
+        let form = new formidable.IncomingForm();
         form.parse(req, function(err, fields){
           let instance = {
             _memeID: fields.memeID,

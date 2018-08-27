@@ -32,7 +32,7 @@ server.get('/index', function(req,resp){
   server.get('/', function(req,resp){
       memeModel.viewMeme(function(list){
       const data = { list:list};
-      var findUser = userModel.findOne(req.session.username);
+      let findUser = userModel.findOne(req.session.username);
       //  findUser.then((foundUser)=>
       resp.render('./pages/index',{data:data, username:req.session.username});
     });
@@ -45,7 +45,7 @@ server.get('/index', function(req,resp){
 server.get('/user-profile/:username', function(req,resp){
   memeModel.searchOwner(req.params.username, function(list){
     const data = { list:list};
-      var findUser = userModel.findOne(req.params.username)
+      let findUser = userModel.findOne(req.params.username)
       findUser.then((foundUser)=>
         {
             if(foundUser)
@@ -69,12 +69,12 @@ server.get('/user-profile/:username', function(req,resp){
 });
 
   server.post('/log-in=successful', function(req,resp){
-      var form = new formidable.IncomingForm()
-//      var password = req.body.password;
+      let form = new formidable.IncomingForm()
+//      let password = req.body.password;
       
     form.parse(req, function (err, fields, files) {
-      var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
-      var findUser = userModel.findOne(fields.username)
+      let hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
+      let findUser = userModel.findOne(fields.username)
       findUser.then((foundUser)=>
         {
             if(foundUser)
@@ -97,40 +97,14 @@ server.get('/user-profile/:username', function(req,resp){
     });
   });
 
-//   server.post('/signed-up', function(req,resp){
-//     var form = new formidable.IncomingForm();
-//     form.parse(req, function (err, fields, files) {
-//         var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
-//       var oldpath = files.image.path;
-//       var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name);
-//       fs.readFile(oldpath, function (err, data) {
-//         if (err) throw err;
-//         console.log('File read!');
-//         fs.writeFile(newpath, data, function (err) {
-//           if (err) throw err;
-//           console.log('File written!');
-//           userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
-//         is.pipe(os);
-//             fs.unlink(oldpath, function (err) {
-//           if (err) throw err;
-//           console.log('File deleted!');
-//       });
-//         if (err) throw err;
-//           resp.redirect('/');
-//         });//addUser
-//       });//rename
-//     });//parse
-//   });
-//   });//post
-// }
 
 server.post('/signed-up', function(req,resp){
-  var form = new formidable.IncomingForm();
+  let form = new formidable.IncomingForm();
   form.parse(req, function (err, fields, files) {
-      var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
+      let hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex")
     
-      var is = fs.createReadStream(files.image.path);
-      var os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path) + files.image.name));
+      let is = fs.createReadStream(files.image.path);
+      let os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path) + files.image.name));
       is.pipe(os);
       is.on('end',function() {
           fs.unlinkSync(files.image.path);
