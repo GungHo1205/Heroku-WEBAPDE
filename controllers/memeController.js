@@ -117,9 +117,12 @@ server.post('/delete', function(req,resp){
 server.post('/uploaded-meme', function(req,resp){
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      var oldpath = files.image.path;
-      var newpath = path.join('./','public','new',path.basename(files.image.path)+ files.image.name)
-      fs.rename(oldpath, newpath, function (err) {
+      var is = fs.createReadStream (files.image.path);
+      var os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path)+ files.image.name))
+      is.pipe(os);
+      is.on('end',function() {
+          fs.unlinkSync(files.image.path);
+      });
         var instance = {
             memeTitle: fields.memeTitle,
             memeDate: Date(),
@@ -138,8 +141,6 @@ server.post('/uploaded-meme', function(req,resp){
                 })
       });//rename
     });//parse
-      
-});
 server.post('/edit', function(req,resp){
   var form = new formidable.IncomingForm();
   form.parse(req, function (err, fields, files) {
