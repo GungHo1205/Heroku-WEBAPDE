@@ -119,9 +119,9 @@ function handleImage(e) {
                 <div id="imageBorder">
                         <div id="imageContainer">
                                 <div class="dropbox" onclick="$('#uploadImage').click()">
-                                        Click here or drag here your images
+                                        <br>Click here or drag here your images
                                         <img src="" id = 'uploadPreview'/>
-                                        <input type="file" name="image2"  id="uploadImage" onchange = 'PreviewImage();' accept="image/*"/>
+                                        <input type="file" name="image"  id="uploadImage" onchange = 'PreviewImage();' accept="image/*" required/>
                                     </div>
                         </div>
 
@@ -155,9 +155,9 @@ function handleImage(e) {
     <div id="imageBorder">
             <div id="imageContainer">
                     <div class="dropbox2" onclick="$('#uploadImage2').click()">
-                            Click here or drag here your images
+                            <br>Click here or drag here your images
                             <img src="" id = 'uploadPreview2'/>
-                            <input type="file" name="image"  id="uploadImage2" onchange = 'PreviewImage2();' accept="image/*"/>
+                            <input type="file" name="image2"  id="uploadImage2" onchange = 'PreviewImage2();' accept="image/*" required/>
                         </div>
             </div>
                     <br>
@@ -207,7 +207,7 @@ function handleImage(e) {
     })
 
         if( document.getElementById('memePrivacy3').value == 'Public'){
-        document.getElementById('memeShare').disabled = true;
+        document.getElementById('memeShare2').disabled = true;
     }
     document.getElementById('memePrivacy3').addEventListener("click", function(){
             document.getElementById('memeShare2').value = '';
