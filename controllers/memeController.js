@@ -1,6 +1,6 @@
 const memeModel = require('../models/memeModel');
 const userModel = require('../models/userModel');
-const tagModel = require('../models/tagModel');
+const commentModel = require('../models/commentModel');
 const path = require('path');
 const bodyparser = require('body-parser');
 const timestamp = require('time-stamp');
@@ -19,7 +19,7 @@ function memeModule(server){
     });
     
     server.post('/likedMeme', function(req,resp){
-      var form = new formidable.IncomingForm();
+      let form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
         memeModel.addLike(fields.memeID, req.session.username);
         resp.redirect('/');
@@ -27,10 +27,10 @@ function memeModule(server){
     });
     
     server.get('/memeCall/:id', function(req,resp){
-              var findUser = userModel.findOne(req.session.username);
+              let findUser = userModel.findOne(req.session.username);
        findUser.then((foundUser)=>{
            if(foundUser){
-         var findMeme = memeModel.findMeme(req.params.id)
+         let findMeme = memeModel.findMeme(req.params.id)
          memeModel.viewComment(req.params.id, function(list){
            const data = {list: list}
       findMeme.then((foundMeme)=>
@@ -65,12 +65,12 @@ function memeModule(server){
         });
       
 server.get('/searched', function(req,resp){
-      var form = new formidable.IncomingForm();
+      let form = new formidable.IncomingForm();
       form.parse(req, function(err, fields){
         console.log(req.query.search);
       memeModel.searchMeme(req.query.search, function(list){
       const data = { list:list};
-      var findUser = userModel.findOne(req.session.username);
+      let findUser = userModel.findOne(req.session.username);
        findUser.then((foundUser)=>
       resp.render('./pages/index',{data:data, username:req.session.username})
             )
@@ -90,7 +90,7 @@ server.get('/upload-meme', function(req,resp){
   }) ;
     
 server.post('/delete', function(req,resp){
-          var form = new formidable.IncomingForm();
+          let form = new formidable.IncomingForm();
           form.parse(req, function (err, fields, files) {
             userModel.deleteMeme(req.session.username,fields.memeID);
                 memeModel.deleteMeme(fields.memeID);
@@ -99,31 +99,16 @@ server.post('/delete', function(req,resp){
           });
   }) ;
 
-  
-  server.post('/add-comment', function(req, resp){
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields){
-      let instance = {
-        commentOwner: req.session.username,
-        commentDesc: fields.comment 
-      }
-        memeModel.pushComment(fields.memeID, instance);
-
-        resp.redirect('/memeCall/' + fields.memeID)
-    });
-    
-  });
-
 server.post('/uploaded-meme', function(req,resp){
-    var form = new formidable.IncomingForm();
+    let form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      var is = fs.createReadStream (files.image.path);
-      var os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path)+ files.image.name))
+      let is = fs.createReadStream (files.image.path);
+      let os = fs.createWriteStream(path.join('./','public','new',path.basename(files.image.path)+ files.image.name))
       is.pipe(os);
       is.on('end',function() {
           fs.unlinkSync(files.image.path);
       });
-        var instance = {
+        let instance = {
             memeTitle: fields.memeTitle,
             memeDate: Date(),
             memeTime: timestamp("<YYYY-MM-DD-HH"),
@@ -142,11 +127,11 @@ server.post('/uploaded-meme', function(req,resp){
       });//rename
     });//parse
 server.post('/edit', function(req,resp){
-  var form = new formidable.IncomingForm();
+  let form = new formidable.IncomingForm();
   form.parse(req, function (err, fields, files) {
     console.log(fields.tite);
-    var oldpath = files.image.path;
-    var newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name)
+    let oldpath = files.image.path;
+    let newpath = path.join('./','public','new',path.basename(files.image.path) + files.image.name)
     fs.rename(oldpath, newpath, function (err) {
       console.log(req.session.username);
       userModel.editMeme(req.session.username, fields.memeID,fields.memeTitle, fields.memeTag, path.basename(files.image.path) + files.image.name, fields.memePrivacy );

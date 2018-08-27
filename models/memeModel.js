@@ -11,8 +11,10 @@ var memeSchema = mongoose.Schema({
         memeShare: String,
         likers:[String],
         comment:[{
+          _memeID: mongoose.Schema.Types.ObjectId,
           commentOwner: String,
-          commentDesc: String
+          commentDesc: String,
+          nestedComments:[mongoose.Schema.Types.ObjectId]
         }]
 }); // meme schema
 
@@ -52,12 +54,6 @@ function viewComment(search, callback){
 }
 
 function searchMeme(search, callback){
-  console.log(search.split(','));
-  console.log(search.split(', '));
-  var split = search.split(', ');
-  console.log(split+ 'first');
-  split.toString();
-  console.log(split + 'second');
   memeModel.find({$or : [{memeTag: {$in: search}}, {memeTag: {$in: search.split(', ')}}, {memeTag: {$in: search.split(', ').reverse()}}]}, function (err, list) {
     if(err) return console.error(err);
     callback(list);
