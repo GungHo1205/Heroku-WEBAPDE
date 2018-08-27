@@ -25,13 +25,6 @@
             z-index:1;
             border:none;
           }
-<<<<<<< Updated upstream:views/pages/multi-upload.ejs
-          #uploadPreview2{
-            align-content: center;
-            width: 100px; 
-            height: 100px;
-          }
-=======
         .dropbox {
             position:relative; 
             overflow:hidden; 
@@ -48,7 +41,32 @@
             z-index:2;
             cursor:pointer;
         }
->>>>>>> Stashed changes:views/pages/upload-meme.ejs
+        #uploadPreview2{
+            position:absolute;
+            width:302px;
+            height:352px;
+            top:-1px;
+            left:-1px;
+            z-index:1;
+            border:none;
+          }
+        .dropbox2 {
+            position:relative; 
+            overflow:hidden; 
+            width:300px; 
+            height:350px; 
+            background:#f3f3f3; 
+            border:2px dashed #e8e8e8;}
+
+        #uploadImage2{
+            position:absolute;
+            width:300px;
+            height:400px;
+            top:-50px;
+            z-index:2;
+            cursor:pointer;
+        }
+
     </style>
     <script>
           function PreviewImage() {
@@ -58,15 +76,21 @@
           Reader.onload = function (readerEvent) {
               document.getElementById("uploadPreview").src = readerEvent.target.result;
           };
-          let Reader2 = new FileReader();
-          Reader2.readAsDataURL(document.getElementById("uploadImage2").files[0]);
+      };
+
+                function PreviewImage2() {
+          let Reader = new FileReader();
+          Reader.readAsDataURL(document.getElementById("uploadImage2").files[0]);
   
-          Reader2.onload = function (readerEvent2) {
-              document.getElementById("uploadPreview2").src = readerEvent2.target.result;
+          Reader.onload = function (readerEvent) {
+              document.getElementById("uploadPreview2").src = readerEvent.target.result;
           };
       };
       
       var imageLoader = document.getElementById('uploadImage');
+    imageLoader.addEventListener('change', handleImage, false);
+
+      var imageLoader = document.getElementById('uploadImage2');
     imageLoader.addEventListener('change', handleImage, false);
 
 function handleImage(e) {
@@ -91,18 +115,13 @@ function handleImage(e) {
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-<<<<<<< Updated upstream:views/pages/multi-upload.ejs
               <form action='/multi-uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload' autocomplete="off">
-=======
-              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload' autocomplete="off">
-
->>>>>>> Stashed changes:views/pages/upload-meme.ejs
                 <div id="imageBorder">
                         <div id="imageContainer">
                                 <div class="dropbox" onclick="$('#uploadImage').click()">
                                         Click here or drag here your images
                                         <img src="" id = 'uploadPreview'/>
-                                        <input type="file" name="image"  id="uploadImage" onchange = 'PreviewImage();' accept="image/*"/>
+                                        <input type="file" name="image2"  id="uploadImage" onchange = 'PreviewImage();' accept="image/*"/>
                                     </div>
                         </div>
 
@@ -126,22 +145,21 @@ function handleImage(e) {
             
             </div> 
             <div>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public' checked>Public</label>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private' >Private</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public' id = 'memePrivacy1' checked>Public</label>
+                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private'id = 'memePrivacy2' >Private</label>
             </div>
             </br>
         </br>
     </br>
             
-
-                            <div id="imageBorder">
-                                <div id="imageContainer">
-                                <div id="dropbox">
-                                <img id="uploadPreview2" />
-                                </div>
-                                </div>
-                            </div>  
-                        <input id="uploadImage2" type="file" onchange="PreviewImage();" name = 'image2' accept="image/*" required/>       
+    <div id="imageBorder">
+            <div id="imageContainer">
+                    <div class="dropbox2" onclick="$('#uploadImage2').click()">
+                            Click here or drag here your images
+                            <img src="" id = 'uploadPreview2'/>
+                            <input type="file" name="image"  id="uploadImage2" onchange = 'PreviewImage2();' accept="image/*"/>
+                        </div>
+            </div>
                     <br>
                     <p>Enter meme Title</p>
                     <input type = 'text' name = 'memeTitle2' required>
@@ -160,8 +178,8 @@ function handleImage(e) {
                     
                     </div> 
                     <div>
-                        <label class="radio-inline"><input type="radio" name="memePrivacy2" value = 'Public'  checked>Public</label>
-                        <label class="radio-inline"><input type="radio" name="memePrivacy2" value = 'Private' >Private</label>
+                        <label class="radio-inline"><input type="radio" name="memePrivacy2" value = 'Public'  id = 'memePrivacy3' checked>Public</label>
+                        <label class="radio-inline"><input type="radio" name="memePrivacy2" value = 'Private' id = 'memePrivacy4'>Private</label>
                     </div>           
             <p style="text-align: right; margin-top: 20px;">
             <input class="btn btn-lg btn-primary btn-block" type = "submit" value='Upload Meme'>
@@ -186,6 +204,18 @@ function handleImage(e) {
     document.getElementById('memePrivacy2').addEventListener("click", function(){
             document.getElementById('memeShare').disabled = false;
             document.getElementById('memeShare').required = true;
+    })
+
+        if( document.getElementById('memePrivacy3').value == 'Public'){
+        document.getElementById('memeShare').disabled = true;
+    }
+    document.getElementById('memePrivacy3').addEventListener("click", function(){
+            document.getElementById('memeShare2').value = '';
+            document.getElementById('memeShare2').disabled = true;
+    })
+    document.getElementById('memePrivacy4').addEventListener("click", function(){
+            document.getElementById('memeShare2').disabled = false;
+            document.getElementById('memeShare2').required = true;
     })
 
     var imageLoader = document.getElementById('uploadImage');
