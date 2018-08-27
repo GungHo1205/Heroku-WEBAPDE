@@ -15,18 +15,26 @@ var userSchema = mongoose.Schema({
 }); // user schema
 
 var userModel = mongoose.model('user', userSchema); // model used for database of userinfo
+
 function addUser(username, email, image, password, shortBio, callback){
-  var instance = new userModel({ username: username, email:email, image: image, password: password, shortBio: shortBio });
-  instance.save(function (err) {
-    if(err) return console.error(err);
+  userModel.findOne({username: username}).then((foundUser)=>{
+    if(foundUser){
     callback();
+    console.log("username already exists");
+    }else{
+    console.log("successfully made user");
+    var instance = new userModel({ username: username, email:email, image: image, password: password, shortBio: shortBio });
+    instance.save(function (err) {
+      if(err) return console.error(err);
+      callback();
+    });
+    }
   });
 }
 
 
 function findOne(username){
    return userModel.findOne({username: username});
-    
 }
 
 function findUsers(callback){

@@ -109,7 +109,7 @@ server.post('/signed-up', function(req,resp){
       is.on('end',function() {
           fs.unlinkSync(files.image.path);
       });
-      
+
         userModel.addUser(fields.username, fields.emailAddress, path.basename(files.image.path) + files.image.name, hashedpassword, fields.shortBio, function(){
 
       if (err) throw err;
@@ -117,6 +117,7 @@ server.post('/signed-up', function(req,resp){
     });
     });//post
 });
+
 }
 
 module.exports.Activate = userModule;
