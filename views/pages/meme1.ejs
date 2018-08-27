@@ -224,6 +224,11 @@
                     <% for(let i = 0;i<data.list.comment.length;i++){ %>
                     <div id="commentcontent"><%=data.list.comment[i].commentDesc%></div>
                     <div id="user">commented by <%=data.list.comment[i].commentOwner%></div>
+                    <div>
+                        <form action='/add-nested' method='post'>
+                        <input type="submit" value="Reply">
+                        </form>
+                    </div>
                     <hr>
                     <%  } %>
                 
