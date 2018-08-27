@@ -39,7 +39,7 @@ function pushComment(search, comment){
 }
 
 function viewMeme(callback){
-  counter=0;
+  counter=5;
   memeModel.find().sort({memeDate : -1}).limit(5).then((list) => {
     callback(list);
   }, (err) => {
