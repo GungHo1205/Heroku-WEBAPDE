@@ -1,106 +1,149 @@
-    <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Upload a Meme!</title>
-    
-<link rel="icon" href="./icon.png">
-    <link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap.min.css" /> <!--for style-->
-    <link rel="stylesheet" type="text/css" href="./stylesheets/font-awesome.min.css" /> <!--for style-->
-    <style>
-        h1{
-            text-align: center;
-        }
-        #dropbox {
-            border: 2px dashed;
-            height: 105px;
-            width: 105px;
-          }
-          #uploadPreview{
-            align-content: center;
-            width: 100px; 
-            height: 100px;
-          }
-    </style>
-    <script>
-          function PreviewImage() {
+  <title>Upload Meme</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    function PreviewImage() {
           let Reader = new FileReader();
           Reader.readAsDataURL(document.getElementById("uploadImage").files[0]);
   
           Reader.onload = function (readerEvent) {
               document.getElementById("uploadPreview").src = readerEvent.target.result;
           };
-      };
-
-
+    };
+      
+    $(document).ready(function(){
+    $(".upload").click(function(){
+        alert("User has uploaded meme");
+    });
+  });   
   </script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
 
+    .jumbotron {
+      color: white;
+      background-color: rebeccapurple;
+    }
+
+    body {
+      background-color:antiquewhite;
+      padding-top: 70px;
+      color:black;
+    }
+      
+      li{
+          list-style-type:none;
+      }
+      
+      .img{
+          margin-bottom: 10px;
+      }
+      .mid{
+        border-left: 10px dotted  black;
+        border-right: 10px dotted  black;
+        border-top: 10px dotted  black;
+        border-bottom: 10px dotted  black;
+        padding-bottom: 20px;
+        padding-top: 20px;
+      }
+      
+      #dropbox {
+            border: 2px solid;
+            height: 120px;
+            width: 120px;
+          }
+      #uploadPreview{
+            align-content: center;
+            width: 120px; 
+            height: 120px;
+       }
+  </style>
 </head>
 <body>
-<%- include loggedNavBar.ejs %>
-</br>
-</br>
-</br>
-<div class="container">
-<div class="page-header">
-    <h1>Upload a meme to Ememerald!</h1>
-</div>
-<div class="container">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-              <form action='/uploaded-meme' enctype="multipart/form-data" method = "post" id = 'upload' name = 'upload' autocomplete="off">
-                <div id="imageBorder" type="file" onchange="PreviewImage();" name = 'image' accept="image/*">
-                        <div id="imageContainer">
-                          <div id="dropbox">
-                           <img id="uploadPreview" />
-                          </div>
-                        </div>
-                    </div>  
-                <input id="uploadImage" type="file" onchange="PreviewImage();" name = 'image' accept="image/*" required/>       
-            <br>
-            <p>Enter meme Title</p>
-            <input type = 'text' name = 'memeTitle' required>
-            <p>Select your tags!</p>
-            <div>
-                <textarea rows="2" cols="45" name = 'memeTag' form = 'upload' placeholder = 'Type your memes here separated by commas(,)'></textarea>
-            </div>
-            <div class="form-group">
-              <label for="share">Share to users:</label>
-               <input type = 'text' name = 'memeShare' id = 'memeShare' list = 'users'>
-               <datalist id = 'users'>
-                    <%for(let i = 0; i< data.list.length;i++){ %>
-                   <option value = '<%=data.list[i].username%>'</option>
-                    <%}%>
-               </datalist>
-            
-            </div> 
-            <div>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Public' id ='memePrivacy1' checked>Public</label>
-                <label class="radio-inline"><input type="radio" name="memePrivacy" value = 'Private'id = 'memePrivacy2'>Private</label>
-            </div>
-            <p style="text-align: right; margin-top: 20px;">
-            <input class="btn btn-lg btn-primary btn-block" type = "submit" value='Upload Meme'>
-            <a href="/multi-upload" class="btn btn-lg btn-secondary">Upload Multiple Memes</a>
-            <a href="javascript:history.back()" class="btn btn-lg btn-secondary">Cancel Upload</a>
-            </p>
-        </form>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar">potato</span>
+        <span class="icon-bar">tomato</span>
+        <span class="icon-bar">asdf</span>                        
+      </button>
+      <div>
+        <a class="navbar-brand" href="/main-postLogin"><img src="./HMMMmmmmMMMMmmmm.png" class="img-responsive" width="35px" height="35px"></a>
+      </div>
+      
     </div>
-    <div class="col-md-4"></div>
-</div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/about-pageSigned">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-
+<div class="row">
+<div class="container">
+<div class="col-sm-4"></div>
+  <div class="col-sm-4 mid">
+<!--    <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;"> -->  
+    <form action="user-profile" method= "post" name = 'upload' enctype="multipart/form-data">
+        <div id="imageBorder">
+          <div id="imageContainer">
+            <div id="dropbox">
+                <img id="uploadPreview" />
+            </div>
+          </div>
+       </div>  
+        
+        <div>
+            <input type="file" name = 'memeimage' onchange="PreviewImage();" id="uploadImage" accept="image/*"/>
+        </div>
+        <div>
+            <h4>Meme Title:</h4>
+            <input type="text" name = 'memeTitle' placeholder="Enter Title">
+        </div>
+            <h4>Select Tag/s:</h4>
+             <div>
+                <textarea rows="2" cols="45" name = 'memeTag' placeholder = 'Type your tags separated by spaces'></textarea>
+            </div>
+            
+    <h4>Select Privacy:</h4>
+    <span><input type="radio" name = "memePrivacy" value="Public"><label>Public</label></span>
+    <span><input type="radio" name = "memePrivacy" value="Private"><label>Private</label></span>
+        <h4>Share to Users: </h4>
+      <textarea class = "form-control" name ="memeShared" rows = 2 placeholder = 'Type shared people separated by spaces'></textarea>
+      <button type="submit" class="btn btn-success btn-block upload" style="margin-top: 30px; background-blue: red; border-color: red;"><span class="glyphicon glyphicon-off"></span> Upload
+    </button>
+    </form>
+    </div>
+    <div class="col-sm-4"> 
+    </div>
+  </div>
 </div>
-<script>
-    if( document.getElementById('memePrivacy1').value == 'Public'){
-        document.getElementById('memeShare').disabled = true;
-    }
-    document.getElementById('memePrivacy1').addEventListener("click", function(){
-            document.getElementById('memeShare').value = '';
-            document.getElementById('memeShare').disabled = true;
-    })
-    document.getElementById('memePrivacy2').addEventListener("click", function(){
-            document.getElementById('memeShare').disabled = false;
-            document.getElementById('memeShare').required = true;
-    })
-</script>
 </body>
 </html>
+
+
